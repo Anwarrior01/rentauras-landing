@@ -1,14 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import RentaurasXHeroSection from './rentaurasX/RentaurasXHeroSection';
-import RentaurasXDescriptionSection from './rentaurasX/RentaurasXDescriptionSection';
-import RentaurasXStepsSection from './rentaurasX/RentaurasXStepsSection';
-import RentaurasXWhyChooseSection from './rentaurasX/RentaurasXWhyChooseSection';
-import RentaurasXEVCollectionSection from './rentaurasX/RentaurasXEVCollectionSection';
-import RentaurasXScreenshotsSection from './rentaurasX/RentaurasXScreenshotsSection';
-import RentaurasXSecuritySection from './rentaurasX/RentaurasXSecuritySection';
-import RentaurasXFAQSection from './rentaurasX/RentaurasXFAQSection';
-
+import RentaurasXHeroSection from './rentaurasx/RentaurasXHeroSection';
+import RentaurasXDescriptionSection from './rentaurasx/RentaurasXDescriptionSection';
+import RentaurasXStepsSection from './rentaurasx/RentaurasXStepsSection';
+import RentaurasXWhyChooseSection from './rentaurasx/RentaurasXWhyChooseSection';
+import RentaurasXEVCollectionSection from './rentaurasx/RentaurasXEVCollectionSection';
+import RentaurasXScreenshotsSection from './rentaurasx/RentaurasXScreenshotsSection';
+import RentaurasXSecuritySection from './rentaurasx/RentaurasXSecuritySection';
+import RentaurasXFAQSection from './rentaurasx/RentaurasXFAQSection';
 
 const RentaurasXPage = ({ setCurrentPage }) => {
   return (
