@@ -175,8 +175,8 @@ const SafetySection = () => {
                 <motion.div
                   className="absolute -top-4 -left-4 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center"
                   initial={{ opacity: 0, scale: 0 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-                  transition={{ delay: 1, duration: 0.5 }}
+                  // animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                  // transition={{ delay: 1, duration: 0.5 }}
                   animate={{
                     y: [0, -8, 0],
                     rotate: [0, 180, 360]
@@ -192,8 +192,8 @@ const SafetySection = () => {
                 <motion.div
                   className="absolute -bottom-6 -right-6 w-12 h-12 bg-gradient-to-br from-blue-400 to-[#0BB0CD] rounded-full opacity-80 flex items-center justify-center"
                   initial={{ opacity: 0, scale: 0 }}
-                  animate={isInView ? { opacity: 0.8, scale: 1 } : { opacity: 0, scale: 0 }}
-                  transition={{ delay: 1.2, duration: 0.6 }}
+                  // animate={isInView ? { opacity: 0.8, scale: 1 } : { opacity: 0, scale: 0 }}
+                  // transition={{ delay: 1.2, duration: 0.6 }}
                   animate={{
                     scale: [1, 1.2, 1],
                     opacity: [0.8, 0.6, 0.8]
@@ -210,8 +210,8 @@ const SafetySection = () => {
                 <motion.div
                   className="absolute top-1/2 -left-8 w-6 h-6 bg-yellow-400 rounded-full opacity-70"
                   initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 0.7, x: 0 } : { opacity: 0, x: -20 }}
-                  transition={{ delay: 1.5, duration: 0.7 }}
+                  // animate={isInView ? { opacity: 0.7, x: 0 } : { opacity: 0, x: -20 }}
+                  // transition={{ delay: 1.5, duration: 0.7 }}
                   animate={{
                     x: [0, 10, 0],
                     scale: [1, 1.3, 1]

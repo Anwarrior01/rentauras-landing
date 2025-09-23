@@ -83,8 +83,8 @@ const ChallengeSection = () => {
             <motion.div
               className="absolute -bottom-4 -right-4 w-12 h-12 bg-blue-200/20 rounded-full"
               initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
+              // animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+              // transition={{ delay: 1, duration: 0.6 }}
               animate={{
                 y: [0, -10, 0],
                 opacity: [0.2, 0.4, 0.2]

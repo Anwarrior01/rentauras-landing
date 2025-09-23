@@ -173,8 +173,8 @@ const OurServicesSection = ({ setCurrentPage }) => {
                 <motion.div
                   className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-[#0BB0CD]/5 to-transparent rounded-xl"
                   initial={{ scale: 0, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                  transition={{ delay: 0.5 + index * 0.2, duration: 0.8 }}
+                  // animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                  // transition={{ delay: 0.5 + index * 0.2, duration: 0.8 }}
                   animate={{
                     rotate: [0, 360],
                     scale: [1, 1.1, 1]
