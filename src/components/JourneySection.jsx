@@ -203,7 +203,7 @@ const JourneySection = ({ setCurrentPage }) => {
               variants={imageReveal}
             >
               <motion.img
-                src="/src/assets/app_screens.png"
+                src="assets/app_screens.png"
                 alt="App Screens"
                 className="w-full max-w-md h-auto relative z-10"
                 whileHover={{ 

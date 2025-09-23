@@ -157,7 +157,7 @@ const SafetySection = () => {
                 
                 {/* Main image with hover effects */}
                 <motion.img
-                  src="/src/assets/Business-deal-cuate.svg"
+                  src="assets/Business-deal-cuate.svg"
                   alt="Safety"
                   className="w-full max-w-lg h-auto relative z-10"
                   variants={imageReveal}

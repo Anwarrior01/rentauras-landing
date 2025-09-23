@@ -187,7 +187,7 @@ const HeroSection = ({ setCurrentPage }) => {
               />
 
               <motion.img
-                src="/src/assets/hero/driving-cuate.svg"
+                src="assets/hero/driving-cuate.svg"
                 alt="Driving"
                 className="w-full h-auto relative z-10"
                 initial={{ opacity: 0, scale: 1.1 }}

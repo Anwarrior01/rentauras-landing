@@ -24,7 +24,7 @@ const RightNowSection = () => {
       id: 'women',
       title: 'Women to Women Service',
       description: 'First in Morocco to introduce women-to-women service, where female passengers are exclusively driven by verified female drivers for enhanced safety and comfort.',
-      image: '/src/assets/By-my-car-cuate.svg',
+      image: 'assets/By-my-car-cuate.svg',
       category: 'INNOVATION',
       date: 'Dec 15'
     },
@@ -32,7 +32,7 @@ const RightNowSection = () => {
       id: 'eco',
       title: 'Eco-Friendly Transportation',
       description: 'Leading the way in sustainable mobility with electric and hybrid vehicles across our platform, protecting Morocco\'s environment for future generations.',
-      image: '/src/assets/Environment-cuate.svg',
+      image: 'assets/Environment-cuate.svg',
       category: 'SUSTAINABILITY',
       date: 'Nov 20'
     },
@@ -40,7 +40,7 @@ const RightNowSection = () => {
       id: 'ecosystem',
       title: 'Integrated Ecosystem',
       description: 'Complete transportation ecosystem combining car rentals and ride-hailing services under one unified platform, revolutionizing how Morocco moves.',
-      image: '/src/assets/Back-to-back-cuate.svg',
+      image: 'assets/Back-to-back-cuate.svg',
       category: 'TECHNOLOGY',
       date: 'Oct 08'
     },
@@ -48,7 +48,7 @@ const RightNowSection = () => {
       id: 'pioneer',
       title: 'Transportation Pioneer',
       description: 'Morocco\'s first fully digital transportation platform, setting new standards for innovation, safety, and user experience in the MENA region.',
-      image: '/src/assets/Teamwork-cuate.svg',
+      image: 'assets/Teamwork-cuate.svg',
       category: 'LEADERSHIP',
       date: 'Sep 12'
     }

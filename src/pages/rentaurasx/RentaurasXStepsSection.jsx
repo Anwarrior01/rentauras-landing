@@ -18,7 +18,7 @@ const RentaurasXStepsSection = () => {
       id: 1,
       title: 'Download & Register',
       description: 'Quick sign-up to start your electric journey.',
-      image: '/src/assets/rentauras/steps/Mobile-login-cuate.svg',
+      image: 'assets/rentauras/steps/Mobile-login-cuate.svg',
       bgColor: 'bg-purple-100',
       accentColor: '#8B5CF6'
     },
@@ -26,7 +26,7 @@ const RentaurasXStepsSection = () => {
       id: 2,
       title: 'Request Your Ride',
       description: 'Book eco-friendly rides with verified professional drivers.',
-      image: '/src/assets/rentaurasx/steps/City-driver-cuate.svg',
+      image: 'assets/rentaurasx/steps/City-driver-cuate.svg',
       bgColor: 'bg-green-100',
       accentColor: '#10B981'
     },
@@ -34,7 +34,7 @@ const RentaurasXStepsSection = () => {
       id: 3,
       title: 'Track & Pay Securely',
       description: 'Real-time tracking and cash/cashless secure payments.',
-      image: '/src/assets/rentaurasx/steps/GPS-navigator-cuate.svg',
+      image: 'assets/rentaurasx/steps/GPS-navigator-cuate.svg',
       bgColor: 'bg-yellow-100',
       accentColor: '#F59E0B'
     },
@@ -42,7 +42,7 @@ const RentaurasXStepsSection = () => {
       id: 4,
       title: 'Arrive Comfortably',
       description: 'Enjoy smooth rides in our electric and hybrid vehicles.',
-      image: '/src/assets/rentaurasx/steps/driving-cuate.svg',
+      image: 'assets/rentaurasx/steps/driving-cuate.svg',
       bgColor: 'bg-blue-100',
       accentColor: '#2563EB'
     }

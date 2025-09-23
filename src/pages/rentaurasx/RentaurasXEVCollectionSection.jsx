@@ -24,7 +24,7 @@ const RentaurasXEVCollectionSection = () => {
               >
                 <div className="flex justify-center rounded-3xl">
                   <img 
-                    src={`/src/assets/rentaurasx/car_cards/${carNumber}.svg`} 
+                    src={`assets/rentaurasx/car_cards/${carNumber}.svg`} 
                     alt={`Car ${carNumber}`} 
                     className="w-full h-full object-contain rounded-3xl" 
                   />
@@ -41,7 +41,7 @@ const RentaurasXEVCollectionSection = () => {
               >
                 <div className="flex justify-center">
                   <img 
-                    src={`/src/assets/rentaurasx/car_cards/${carNumber}.svg`} 
+                    src={`assets/rentaurasx/car_cards/${carNumber}.svg`} 
                     alt={`Car ${carNumber}`} 
                     className="w-full h-full object-contain border rounded-2xl" 
                   />

@@ -15,19 +15,19 @@ const MarketplaceWhyChooseSection = () => {
 
   const featuresFirstRow = [
     {
-      image: "/src/assets/rentauras/why_rentauras/Active-Support-cuate.svg",
+      image: "assets/rentauras/why_rentauras/Active-Support-cuate.svg",
       title: "24/7 Active Support",
       description: "Round-the-clock assistance for all your rental needs.",
       bgColor: "#f3e8ff",
     },
     {
-      image: "/src/assets/rentauras/why_rentauras/Contact-us-cuate.svg",
+      image: "assets/rentauras/why_rentauras/Contact-us-cuate.svg",
       title: "Easy Contact",
       description: "Reach us anytime through multiple channels.",
       bgColor: "#ecfdf5",
     },
     {
-      image: "/src/assets/rentauras/why_rentauras/Insurance-cuate.svg",
+      image: "assets/rentauras/why_rentauras/Insurance-cuate.svg",
       title: "Full Insurance Coverage",
       description: "Drive with peace of mind with comprehensive coverage.",
       bgColor: "#fef3c7",
@@ -36,13 +36,13 @@ const MarketplaceWhyChooseSection = () => {
 
   const featuresSecondRow = [
     {
-      image: "/src/assets/rentauras/why_rentauras/Payment-Information-cuate.svg",
+      image: "assets/rentauras/why_rentauras/Payment-Information-cuate.svg",
       title: "Secure Payments",
       description: "Your payment information is always protected.",
       bgColor: "#dbeafe",
     },
     {
-      image: "/src/assets/rentauras/why_rentauras/Profile data-amico.svg",
+      image: "assets/rentauras/why_rentauras/Profile data-amico.svg",
       title: "Verified Profiles",
       description: "All hosts are verified for your safety and security.",
       bgColor: "#f3e8ff",

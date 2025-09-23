@@ -113,7 +113,7 @@ const ChallengeSection = () => {
             
             {/* Main illustration */}
             <motion.img
-             src="/src/assets/hero/Frontcar-cuate.svg"
+             src="assets/hero/Frontcar-cuate.svg"
               alt="Challenge Illustration"
               className="w-full h-auto"
               variants={imageReveal}

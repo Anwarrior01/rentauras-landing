@@ -16,33 +16,33 @@ const RentaurasXWhyChooseSection = () => {
   const features = [
     {
       image:
-        "/src/assets/rentaurasx/why_rentauras/Women's-EqualityDay-cuate.svg",
+        "assets/rentaurasx/why_rentauras/Women's-EqualityDay-cuate.svg",
       title: "Women to Women Service",
       description:
         "Exclusive service where female passengers are driven by female drivers.",
       bgColor: "#f8fafc",
     },
     {
-      image: "/src/assets/rentaurasx/why_rentauras/Electric-car-cuate.svg",
+      image: "assets/rentaurasx/why_rentauras/Electric-car-cuate.svg",
       title: "Eco-Friendly Rides",
       description:
         "Electric and hybrid vehicles for sustainable transportation.",
       bgColor: "#f0fdf4",
     },
     {
-      image: "/src/assets/rentaurasx/why_rentauras/driving-cuate.svg",
+      image: "assets/rentaurasx/why_rentauras/driving-cuate.svg",
       title: "Professional Drivers",
       description: "All our drivers are verified professionals, not strangers.",
       bgColor: "#fef3c7",
     },
     {
-      image: "/src/assets/rentaurasx/why_rentauras/Directions-cuate.svg",
+      image: "assets/rentaurasx/why_rentauras/Directions-cuate.svg",
       title: "Real-time Tracking",
       description: "Track your ride in real-time for complete peace of mind.",
       bgColor: "#dbeafe",
     },
     {
-      image: "/src/assets/rentaurasx/why_rentauras/Credit-card-cuate.svg",
+      image: "assets/rentaurasx/why_rentauras/Credit-card-cuate.svg",
       title: "Fair & Transparent Pricing",
       description: "No surge pricing, no hidden fees. Fair rates for everyone.",
       bgColor: "#f3e8ff",

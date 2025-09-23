@@ -30,7 +30,7 @@ const OurServicesSection = ({ setCurrentPage }) => {
       id: 'rental',
       title: t.rentalServiceTitle,
       description: t.rentalServiceDesc,
-      image: '/src/assets/Car-rental-cuate.svg',
+      image: 'assets/Car-rental-cuate.svg',
       page: 'marketplace',
       buttons: [
         {
@@ -53,7 +53,7 @@ const OurServicesSection = ({ setCurrentPage }) => {
       id: 'rides',
       title: t.rideServiceTitle,
       description: t.rideServiceDesc,
-      image: '/src/assets/Directions-cuate.svg',
+      image: 'assets/Directions-cuate.svg',
       page: 'rentaurasX',
       buttons: [
         {

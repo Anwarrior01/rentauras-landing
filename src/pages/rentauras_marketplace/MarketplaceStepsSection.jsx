@@ -18,7 +18,7 @@ const MarketplaceStepsSection = () => {
       number: "STEP 1",
       title: "Download & Sign Up",
       description: "Create your account in seconds and join thousands of happy drivers.",
-      image: "/src/assets/rentauras/steps/Mobile-login-cuate.svg",
+      image: "assets/rentauras/steps/Mobile-login-cuate.svg",
       bgColor: "bg-purple-100",
       labelColor: "#0BB0CD",
       animationColor: ["#0BB0CD", "#8B5CF6", "#0BB0CD"]
@@ -27,7 +27,7 @@ const MarketplaceStepsSection = () => {
       number: "STEP 2", 
       title: "Choose Your Car",
       description: "Browse our wide collection of premium vehicles from trusted hosts.",
-      image: "/src/assets/rentauras/steps/Car-rental-cuate.svg",
+      image: "assets/rentauras/steps/Car-rental-cuate.svg",
       bgColor: "bg-green-100",
       labelColor: "#0BB0CD",
       animationColor: ["#0BB0CD", "#10B981", "#0BB0CD"]
@@ -36,7 +36,7 @@ const MarketplaceStepsSection = () => {
       number: "STEP 3",
       title: "Secure Payment", 
       description: "Pay securely and easily with our trusted payment system.",
-      image: "/src/assets/rentauras/steps/Credit-card-cuate.svg",
+      image: "assets/rentauras/steps/Credit-card-cuate.svg",
       bgColor: "bg-yellow-100",
       labelColor: "#EA580C",
       animationColor: ["#EA580C", "#0BB0CD", "#EA580C"]
@@ -45,7 +45,7 @@ const MarketplaceStepsSection = () => {
       number: "STEP 4",
       title: "Enjoy Your Ride",
       description: "Hit the road and create unforgettable memories.",
-      image: "/src/assets/rentauras/steps/convertible-car-cuate.svg", 
+      image: "assets/rentauras/steps/convertible-car-cuate.svg", 
       bgColor: "bg-blue-100",
       labelColor: "#2563EB",
       animationColor: ["#2563EB", "#0BB0CD", "#2563EB"]
