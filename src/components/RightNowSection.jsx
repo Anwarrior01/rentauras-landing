@@ -225,8 +225,8 @@ const RightNowSection = () => {
                 <motion.div
                   className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-blue-100/30 to-transparent rounded-full"
                   initial={{ scale: 0, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                  transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
+                  // animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                  // transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
                   animate={{
                     rotate: [0, 180, 360],
                     scale: [1, 1.2, 1]
