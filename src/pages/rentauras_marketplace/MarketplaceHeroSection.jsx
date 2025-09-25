@@ -268,7 +268,7 @@ const MarketplaceHeroSection = ({ setCurrentPage }) => {
               transition={{ duration: 0.3 }}
             >
               <motion.img
-                src="assets/rentauras/Rentauras-first-section-image.svg"
+                src="assets/rentauras/Rentauras-first-section-image.png"
                 alt="Rentauras User"
                 className="w-full h-full object-cover"
                 animate={{

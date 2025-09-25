@@ -12,8 +12,9 @@ import {
   imageReveal,
   statsCounter
 } from '../utils/animations';
+import { useNavigate } from 'react-router-dom';
 
-const HeroSection = ({ setCurrentPage }) => {
+const HeroSection = () => {
   const { t } = useLanguage();
 
   const scrollToSection = (sectionId) => {
@@ -28,7 +29,12 @@ const HeroSection = ({ setCurrentPage }) => {
     { label: t.countries, value: t.countriesCount },
     { label: t.downloads, value: t.downloadsCount }
   ];
+  const navigate = useNavigate();
 
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-gradient-to-br from-blue-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,7 +74,7 @@ const HeroSection = ({ setCurrentPage }) => {
 
             {/* CTA Button */}
             <motion.button
-              onClick={() => setCurrentPage('download')}
+              onClick={() => handleNavigation('/download')}
               className="bg-black text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200"
               variants={fadeInUp}
               whileHover={{ 

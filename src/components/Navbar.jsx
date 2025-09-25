@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Globe, ChevronDown, Menu, X } from 'lucide-react';
 
-const Navbar = ({ currentPage, setCurrentPage }) => {
+const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    setIsMobileMenuOpen(false); // Close mobile menu when navigating
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
+  };
+
+  const isActive = (path) => {
+    return location.pathname === path;
   };
 
   return (
@@ -21,55 +29,52 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
-          {/* Logo */}
           <div className="flex-shrink-0">
             <button 
-              onClick={() => handlePageChange('home')}
+              onClick={() => handleNavigation('/')}
               className="text-xl font-semibold tracking-wider text-black hover:opacity-70 transition-opacity duration-200"
             >
               RENTAURAS
             </button>
           </div>
 
-          {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             <button
-              onClick={() => setCurrentPage('marketplace')}
+              onClick={() => handleNavigation('/marketplace')}
               className={`text-sm font-normal hover:opacity-70 transition-opacity duration-200 ${
-                currentPage === 'marketplace' ? 'opacity-100 font-medium text-[#0BB0CD]' : 'opacity-80 text-black'
+                isActive('/marketplace') ? 'opacity-100 font-medium text-[#0BB0CD]' : 'opacity-80 text-black'
               }`}
             >
               {t.rentACar}
             </button>
             
             <button
-              onClick={() => setCurrentPage('rentaurasX')}
+              onClick={() => handleNavigation('/rentaurasx')}
               className={`text-sm font-normal hover:opacity-70 transition-opacity duration-200 ${
-                currentPage === 'rentaurasX' ? 'opacity-100 font-medium text-[#0BB0CD]' : 'opacity-80 text-black'
+                isActive('/rentaurasx') ? 'opacity-100 font-medium text-[#0BB0CD]' : 'opacity-80 text-black'
               }`}
             >
               {t.rentaurasX}
             </button>
             
             <button
-              onClick={() => setCurrentPage('about')}
+              onClick={() => handleNavigation('/about')}
               className={`text-sm font-normal text-black hover:opacity-70 transition-opacity duration-200 ${
-                currentPage === 'about' ? 'opacity-100 font-medium text-[#0BB0CD]' : 'opacity-80'
+                isActive('/about') ? 'opacity-100 font-medium text-[#0BB0CD]' : 'opacity-80'
               }`}
             >
               {t.aboutUs}
             </button>
             
             <button
-              onClick={() => setCurrentPage('contact')}
+              onClick={() => handleNavigation('/contact')}
               className={`text-sm font-normal text-black hover:opacity-70 transition-opacity duration-200 ${
-                currentPage === 'contact' ? 'opacity-100 font-medium text-[#0BB0CD]' : 'opacity-80'
+                isActive('/contact') ? 'opacity-100 font-medium text-[#0BB0CD]' : 'opacity-80'
               }`}
             >
               {t.contact}
             </button>
             
-            {/* Desktop Language Switcher */}
             <div className="relative">
               <button
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
@@ -102,16 +107,14 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
               )}
             </div>
             
-            {/* Desktop Download Button */}
             <button
-              onClick={() => setCurrentPage('download')}
+              onClick={() => handleNavigation('/download')}
               className="bg-black text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200"
             >
               {t.downloadTheApp}
             </button>
           </div>
 
-          {/* Mobile Hamburger Menu */}
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
@@ -122,49 +125,46 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-gray-100 shadow-lg animate-fade-in-down">
             <div className="px-4 py-6 space-y-4">
               
-              {/* Mobile Navigation Links */}
               <button
-                onClick={() => handlePageChange('marketplace')}
+                onClick={() => handleNavigation('/marketplace')}
                 className={`block w-full text-left py-3 px-4 rounded-lg text-base font-normal hover:bg-gray-50 transition-all duration-200 ${
-                  currentPage === 'marketplace' ? 'font-medium text-[#0BB0CD] bg-gray-50' : 'text-black'
+                  isActive('/marketplace') ? 'font-medium text-[#0BB0CD] bg-gray-50' : 'text-black'
                 }`}
               >
                 {t.rentACar}
               </button>
               
               <button
-                onClick={() => handlePageChange('rentaurasX')}
+                onClick={() => handleNavigation('/rentaurasx')}
                 className={`block w-full text-left py-3 px-4 rounded-lg text-base font-normal hover:bg-gray-50 transition-all duration-200 ${
-                  currentPage === 'rentaurasX' ? 'font-medium text-[#0BB0CD] bg-gray-50' : 'text-black'
+                  isActive('/rentaurasx') ? 'font-medium text-[#0BB0CD] bg-gray-50' : 'text-black'
                 }`}
               >
                 {t.rentaurasX}
               </button>
               
               <button
-                onClick={() => handlePageChange('about')}
+                onClick={() => handleNavigation('/about')}
                 className={`block w-full text-left py-3 px-4 rounded-lg text-base font-normal hover:bg-gray-50 transition-all duration-200 ${
-                  currentPage === 'about' ? 'font-medium text-[#0BB0CD] bg-gray-50' : 'text-black'
+                  isActive('/about') ? 'font-medium text-[#0BB0CD] bg-gray-50' : 'text-black'
                 }`}
               >
                 {t.aboutUs}
               </button>
               
               <button
-                onClick={() => handlePageChange('contact')}
+                onClick={() => handleNavigation('/contact')}
                 className={`block w-full text-left py-3 px-4 rounded-lg text-base font-normal hover:bg-gray-50 transition-all duration-200 ${
-                  currentPage === 'contact' ? 'font-medium text-[#0BB0CD] bg-gray-50' : 'text-black'
+                  isActive('/contact') ? 'font-medium text-[#0BB0CD] bg-gray-50' : 'text-black'
                 }`}
               >
                 {t.contact}
               </button>
               
-              {/* Mobile Language Switcher */}
               <div className="border-t border-gray-100 pt-4">
                 <div className="flex items-center space-x-2 px-4 py-2">
                   <Globe className="w-4 h-4 text-gray-500" />
@@ -190,10 +190,9 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                 </div>
               </div>
               
-              {/* Mobile Download Button */}
               <div className="border-t border-gray-100 pt-4">
                 <button
-                  onClick={() => handlePageChange('download')}
+                  onClick={() => handleNavigation('/download')}
                   className="w-full bg-black text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-800 transition-colors duration-200"
                 >
                   {t.downloadTheApp}
@@ -204,7 +203,6 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
         )}
       </div>
       
-      {/* Custom Animation Styles */}
       <style jsx>{`
         .animate-fade-in-down {
           animation: fadeInDown 0.3s ease-out;

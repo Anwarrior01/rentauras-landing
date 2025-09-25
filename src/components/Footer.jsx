@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from "../context/LanguageContext";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { 
@@ -14,33 +15,38 @@ import {
   buttonTap
 } from '../utils/animations';
 
-const Footer = ({ setCurrentPage }) => {
+const Footer = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const footerLinks = {
     services: [
-      { name: t.rentACar, onClick: () => setCurrentPage("marketplace") },
-      { name: t.rentaurasX, onClick: () => setCurrentPage("rentaurasX") },
-      { name: "Safety", onClick: () => setCurrentPage("home") },
-      { name: "Support", onClick: () => setCurrentPage("contact") },
+      { name: t.rentACar, onClick: () => handleNavigation("/marketplace") },
+      { name: t.rentaurasX, onClick: () => handleNavigation("/rentaurasx") },
+      { name: "Safety", onClick: () => handleNavigation("/") },
+      { name: "Support", onClick: () => handleNavigation("/contact") },
     ],
     company: [
-      { name: t.aboutUs, onClick: () => setCurrentPage("about") },
-      { name: t.contact, onClick: () => setCurrentPage("contact") },
-      { name: "Blog", onClick: () => setCurrentPage("home") },
-      { name: "Careers", onClick: () => setCurrentPage("home") },
+      { name: t.aboutUs, onClick: () => handleNavigation("/about") },
+      { name: t.contact, onClick: () => handleNavigation("/contact") },
+      { name: "Blog", onClick: () => handleNavigation("/") },
+      { name: "Careers", onClick: () => handleNavigation("/") },
     ],
     legal: [
-      { name: "Terms of Service", onClick: () => setCurrentPage("home") },
-      { name: "Privacy Policy", onClick: () => setCurrentPage("home") },
-      { name: "Legal", onClick: () => setCurrentPage("home") },
-      { name: "Cookie Policy", onClick: () => setCurrentPage("home") },
+      { name: "Terms of Service", onClick: () => handleNavigation("/") },
+      { name: "Privacy Policy", onClick: () => handleNavigation("/") },
+      { name: "Legal", onClick: () => handleNavigation("/") },
+      { name: "Cookie Policy", onClick: () => handleNavigation("/") },
     ],
   };
 
-  // Real store icons as SVG components
   const AppleIcon = () => (
     <svg className="w-6 h-6 text-[#0BB0CD]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
@@ -68,7 +74,6 @@ const Footer = ({ setCurrentPage }) => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      {/* Animated background elements */}
       <motion.div
         className="absolute top-10 left-20 w-24 h-24 bg-[#0BB0CD]/5 rounded-full"
         animate={{
@@ -112,12 +117,10 @@ const Footer = ({ setCurrentPage }) => {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Main Footer Content */}
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
           variants={staggerContainer}
         >
-          {/* Company Info */}
           <motion.div 
             className="lg:col-span-1"
             variants={staggerItems}
@@ -160,7 +163,6 @@ const Footer = ({ setCurrentPage }) => {
               requests in our app on their own.
             </motion.p>
 
-            {/* Social Icons */}
             <motion.div 
               className="flex space-x-4"
               variants={staggerContainer}
@@ -189,7 +191,6 @@ const Footer = ({ setCurrentPage }) => {
             </motion.div>
           </motion.div>
 
-          {/* Services */}
           <motion.div variants={staggerItems}>
             <motion.h4 
               className="text-lg font-semibold mb-6 text-[#0BB0CD]"
@@ -226,7 +227,6 @@ const Footer = ({ setCurrentPage }) => {
             </motion.ul>
           </motion.div>
 
-          {/* Company */}
           <motion.div variants={staggerItems}>
             <motion.h4 
               className="text-lg font-semibold mb-6 text-[#0BB0CD]"
@@ -263,7 +263,6 @@ const Footer = ({ setCurrentPage }) => {
             </motion.ul>
           </motion.div>
 
-          {/* Download App */}
           <motion.div variants={staggerItems}>
             <motion.h4 
               className="text-lg font-semibold mb-6 text-[#0BB0CD]"
@@ -285,7 +284,7 @@ const Footer = ({ setCurrentPage }) => {
               ].map((app, index) => (
                 <motion.button
                   key={app.store}
-                  onClick={() => setCurrentPage("download")}
+                  onClick={() => handleNavigation("/download")}
                   className="flex items-center space-x-3 bg-black hover:bg-gray-950 transition-colors duration-300 px-4 py-3 rounded-lg border border-[#0BB0CD] w-full"
                   variants={staggerItems}
                   whileHover={{
@@ -328,7 +327,6 @@ const Footer = ({ setCurrentPage }) => {
           </motion.div>
         </motion.div>
 
-        {/* Bottom Section */}
         <motion.div 
           className="border-t border-gray-800 pt-8"
           variants={fadeInUp}
@@ -337,7 +335,6 @@ const Footer = ({ setCurrentPage }) => {
             className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0"
             variants={staggerContainer}
           >
-            {/* Copyright */}
             <motion.div 
               className="text-gray-400 text-sm"
               variants={staggerItems}
@@ -354,7 +351,6 @@ const Footer = ({ setCurrentPage }) => {
               © 2025 RENTAURAS LTD, 2019-2025
             </motion.div>
 
-            {/* Legal Links */}
             <motion.div 
               className="flex space-x-6"
               variants={staggerContainer}
@@ -379,7 +375,6 @@ const Footer = ({ setCurrentPage }) => {
           </motion.div>
         </motion.div>
 
-        {/* Floating decorative elements */}
         <motion.div
           className="absolute top-8 right-8 w-2 h-2 bg-[#0BB0CD] rounded-full"
           animate={{

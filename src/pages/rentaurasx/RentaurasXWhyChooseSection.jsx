@@ -205,7 +205,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                         repeatType: "reverse",
                       }}
                     >
-                      🌹
+                      🌸
                     </motion.span>
                   )}
                 </motion.h3>
@@ -404,7 +404,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                   delay: 1,
                 }}
               >
-                🌹
+                🌸
               </motion.div>
 
               {/* Modal Header */}

@@ -10,28 +10,21 @@ import RentaurasXScreenshotsSection from './rentaurasx/RentaurasXScreenshotsSect
 import RentaurasXSecuritySection from './rentaurasx/RentaurasXSecuritySection';
 import RentaurasXFAQSection from './rentaurasx/RentaurasXFAQSection';
 
-const RentaurasXPage = ({ setCurrentPage }) => {
+const RentaurasXPage = () => {
   return (
     <motion.div
       className="min-h-screen bg-white pt-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8 }}
     >
-      <RentaurasXHeroSection setCurrentPage={setCurrentPage} />
-      
+      <RentaurasXHeroSection />
       <RentaurasXDescriptionSection />
-      
       <RentaurasXStepsSection />
-      
-      <RentaurasXWhyChooseSection setCurrentPage={setCurrentPage}/>
-      
+      <RentaurasXWhyChooseSection />
       <RentaurasXEVCollectionSection />
-      
       <RentaurasXScreenshotsSection />
-      
-      <RentaurasXSecuritySection setCurrentPage={setCurrentPage} />
-      
+      <RentaurasXSecuritySection />
       <RentaurasXFAQSection />
     </motion.div>
   );

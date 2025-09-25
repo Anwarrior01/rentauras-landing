@@ -8,20 +8,20 @@ import MarketplaceScreenshotsSection from './rentauras_marketplace/MarketplaceSc
 import MarketplaceSecuritySection from './rentauras_marketplace/MarketplaceSecuritySection';
 import MarketplaceFAQSection from './rentauras_marketplace/MarketplaceFAQSection';
 
-const MarketplacePage = ({ setCurrentPage }) => {
+const MarketplacePage = () => {
   return (
     <motion.div
       className="min-h-screen bg-white pt-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8 }}
     >
-      <MarketplaceHeroSection setCurrentPage={setCurrentPage} />
+      <MarketplaceHeroSection />
       <MarketplaceDescriptionSection />
       <MarketplaceStepsSection />
       <MarketplaceWhyChooseSection />
       <MarketplaceScreenshotsSection />
-      <MarketplaceSecuritySection setCurrentPage={setCurrentPage} />
+      <MarketplaceSecuritySection />
       <MarketplaceFAQSection />
     </motion.div>
   );

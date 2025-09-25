@@ -79,7 +79,7 @@ const RentaurasXScreenshotsSection = () => {
           >
             <motion.div className="relative">
               <motion.img
-              src="assets/rentauras/payement-image-Rentauras-Marketplace.svg"
+              src="assets/rentaurasx/images-RentaurasX-1.png"
                 alt="App Screenshot 1"
                 className="max-w-sm rounded-3xl shadow-2xl"
                 whileHover={{
@@ -108,7 +108,7 @@ const RentaurasXScreenshotsSection = () => {
             variants={fadeInLeft}
           >
             <motion.img
-              src="assets/rentauras/search-car-rentauras-Marketpalce.svg"
+              src="assets/rentaurasx/images-RentaurasX-2.png"
               alt="App Screenshot 2"
               className="max-w-sm rounded-3xl shadow-2xl"
               whileHover={{

@@ -228,7 +228,7 @@ const RightNowSection = () => {
                     repeatType: "reverse"
                   }}
                 >
-                  🌹
+                  🌸
                 </motion.span>
               </motion.h3>
               

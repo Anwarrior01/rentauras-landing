@@ -266,7 +266,7 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
               transition={{ duration: 0.3 }}
             >
               <motion.img
-                src="assets/rentaurasx/RentaurasX-first-section-image.svg"
+                src="assets/rentaurasx/RentaurasX-first-section-image.png"
                 alt="RentaurasX User"
                 className="w-full h-full object-cover"
                 animate={{

@@ -15,8 +15,9 @@ import {
   buttonTap,
   cardHover,
 } from "../utils/animations";
+import { useNavigate } from "react-router-dom";
 
-const AboutPage = ({ setCurrentPage }) => {
+const AboutPage = () => {
   const heroRef = useRef(null);
   const visionRef = useRef(null);
   const servicesRef = useRef(null);
@@ -30,7 +31,12 @@ const AboutPage = ({ setCurrentPage }) => {
   const impactInView = useInView(impactRef, { once: true, amount: 0.3 });
   const valuesInView = useInView(valuesRef, { once: true, amount: 0.2 });
   const futureInView = useInView(futureRef, { once: true, amount: 0.3 });
+  const navigate = useNavigate();
 
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <div className="min-h-screen bg-white pt-16">
       {/* Hero Section */}
@@ -103,7 +109,7 @@ const AboutPage = ({ setCurrentPage }) => {
               </motion.p>
 
               <motion.button
-                onClick={() => setCurrentPage("download")}
+                onClick={() => handleNavigation("/download")}
                 className="bg-black text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200 relative overflow-hidden"
                 variants={fadeInUp}
                 whileHover={{
@@ -124,7 +130,7 @@ const AboutPage = ({ setCurrentPage }) => {
             {/* Right Image */}
             <motion.div className="relative" variants={imageReveal}>
               <motion.img
-                src="assets/hero/driving-cuate.svg"
+                src="assets/about-us-for-Rentauras.svg"
                 alt="About Rentauras"
                 className="w-full h-auto"
                 whileHover={{ scale: 1.02 }}
@@ -262,7 +268,7 @@ const AboutPage = ({ setCurrentPage }) => {
               </motion.p>
 
               <motion.button
-                onClick={() => setCurrentPage("marketplace")}
+                onClick={() => handleNavigation("/marketplace") }
                 className="text-[#0BB0CD] hover:text-[#0BB0CD]/80 font-medium transition-colors duration-300"
                 whileHover={{ x: 5 }}
               >
@@ -321,7 +327,7 @@ const AboutPage = ({ setCurrentPage }) => {
               </motion.p>
 
               <motion.button
-                onClick={() => setCurrentPage("rentaurasX")}
+                onClick={() => handleNavigation("/rentaurasx")}
                 className="text-[#0BB0CD] hover:text-[#0BB0CD]/80 font-medium transition-colors duration-300"
                 whileHover={{ x: 5 }}
               >
@@ -535,7 +541,7 @@ const AboutPage = ({ setCurrentPage }) => {
             </motion.p>
 
             <motion.button
-              onClick={() => setCurrentPage("contact")}
+              onClick={() => handleNavigation("/contact")}
               className="bg-[#0BB0CD] text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-[#0BB0CD]/90 transition-colors duration-300"
               variants={fadeInUp}
               whileHover={buttonHover}
