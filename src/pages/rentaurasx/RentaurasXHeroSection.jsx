@@ -266,7 +266,7 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
               transition={{ duration: 0.3 }}
             >
               <motion.img
-                src="assets/rentaurasx/girl2.jpg"
+                src="assets/rentaurasx/RentaurasX-first-section-image.svg"
                 alt="RentaurasX User"
                 className="w-full h-full object-cover"
                 animate={{
@@ -301,7 +301,7 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
                 }}
               >
                 <motion.img 
-                  src="assets/rentaurasx/By-mycar-cuate.svg" 
+                  src="assets/rentaurasx/women for women Rentauras2 X.svg" 
                   alt="Women to Women Service" 
                   className="w-42 h-42 mb-2"
                   animate={{

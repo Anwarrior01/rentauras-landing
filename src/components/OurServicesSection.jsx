@@ -31,6 +31,8 @@ const OurServicesSection = ({ setCurrentPage }) => {
       title: t.rentalServiceTitle,
       description: t.rentalServiceDesc,
       image: 'assets/Car-rental-cuate.svg',
+      logo: 'assets/Rentauras-Logo.png',
+      appIcon: 'assets/rentauras-icon.png',
       page: 'marketplace',
       buttons: [
         {
@@ -54,6 +56,8 @@ const OurServicesSection = ({ setCurrentPage }) => {
       title: t.rideServiceTitle,
       description: t.rideServiceDesc,
       image: 'assets/Directions-cuate.svg',
+      logo: 'assets/RentaurasX-Logo.png',
+      appIcon: 'assets/rentaurasx-icon.png',
       page: 'rentaurasX',
       buttons: [
         {
@@ -173,8 +177,6 @@ const OurServicesSection = ({ setCurrentPage }) => {
                 <motion.div
                   className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-[#0BB0CD]/5 to-transparent rounded-xl"
                   initial={{ scale: 0, opacity: 0 }}
-                  // animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                  // transition={{ delay: 0.5 + index * 0.2, duration: 0.8 }}
                   animate={{
                     rotate: [0, 360],
                     scale: [1, 1.1, 1]
@@ -184,6 +186,44 @@ const OurServicesSection = ({ setCurrentPage }) => {
                     scale: { duration: 4, repeat: Infinity, repeatType: "reverse" }
                   }}
                 />
+
+                {/* App Icon - Large, bottom right corner with breathing animation */}
+                <motion.div
+                  className="absolute bottom-6 right-6 w-24 h-24"
+                  animate={{
+                    opacity: [0.05, 0.15, 0.05],
+                    scale: [0.9, 1.1, 0.9],
+                    rotate: [0, 2, -2, 0]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    delay: index * 0.5
+                  }}
+                >
+                  <img
+                    src={service.appIcon}
+                    alt="App Icon"
+                    className="w-full h-full object-contain opacity-10"
+                  />
+                </motion.div>
+
+                {/* Service Logo */}
+                <motion.div 
+                  className="mb-6"
+                  variants={imageReveal}
+                >
+                  <motion.img
+                    src={service.logo}
+                    alt={`${service.title} Logo`}
+                    className="w-full h-16 object-contain mb-4"
+                    whileHover={{
+                      scale: 1.05,
+                      transition: { duration: 0.3 }
+                    }}
+                  />
+                </motion.div>
 
                 {/* Service Image */}
                 <motion.div 
@@ -307,7 +347,10 @@ const OurServicesSection = ({ setCurrentPage }) => {
             >
               {/* Close Button */}
               <motion.button
-                onClick={closeModal}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeModal();
+                }}
                 className="absolute top-6 right-6 p-2 rounded-xl hover:bg-gray-100 transition-colors duration-300"
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}

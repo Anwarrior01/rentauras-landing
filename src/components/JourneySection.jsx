@@ -205,7 +205,7 @@ const JourneySection = ({ setCurrentPage }) => {
               <motion.img
                 src="assets/app_screens.png"
                 alt="App Screens"
-                className="w-full max-w-md h-auto relative z-10"
+                className="w-full max-w-md h-full relative z-10"
                 whileHover={{ 
                   scale: 1.05,
                   rotateY: 5,

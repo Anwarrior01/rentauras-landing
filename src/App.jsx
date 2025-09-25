@@ -13,6 +13,8 @@ import DownloadPage from './pages/DownloadPage';
 import Footer from './components/Footer';
 import RentaurasMarketplacePage from './pages/Marketplace';
 import RentaurasXPage from './pages/RentaurasX';
+import AboutPage from './pages/About';
+import ContactPage from './pages/Contact';
 
 // import HowRentaurasWorks from './pages/rentauras_marketplace/HowRentauras';
 // import CoreValues from './pages/rentauras_marketplace/CoreValues';
@@ -30,12 +32,16 @@ const AppContent = () => {
       //   return <ContactPage />;
       case 'download':
         return <DownloadPage />;
+      case 'about':
+        return <AboutPage />;
+      case 'contact':
+        return <ContactPage />;
       case 'marketplace':
         return (
           <>
             {/* <HeroSection setCurrentPage={setCurrentPage} /> */}
             <div id="how-it-works">
-              <RentaurasMarketplacePage />
+              <RentaurasMarketplacePage setCurrentPage={setCurrentPage} />
               {/* <HowRentaurasWorks /> */}
             </div>
             {/* <DownloadPage /> */}
@@ -51,7 +57,7 @@ const AppContent = () => {
       case 'rentaurasX':
         // You can create a separate RentaurasX page later
         return (
-         <RentaurasXPage/>
+         <RentaurasXPage setCurrentPage={setCurrentPage}/>
         );
       case 'home':
       default:

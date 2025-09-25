@@ -1,56 +1,78 @@
-import React from "react";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 import {
-  Apple,
-  Smartphone,
-  Download,
   Car,
   Users,
-  UserCheck,
+  Zap
 } from "lucide-react";
+import { 
+  fadeInUp, 
+  fadeInLeft, 
+  fadeInRight,
+  staggerContainer, 
+  staggerItems,
+  scaleIn,
+  buttonHover,
+  buttonTap,
+  cardHover,
+  textReveal,
+  imageReveal
+} from '../utils/animations';
 
 const DownloadPage = () => {
   const { t } = useLanguage();
+  const headerRef = useRef(null);
+  const mainCardsRef = useRef(null);
+  const driverCardRef = useRef(null);
+  const qrRef = useRef(null);
+  
+  const headerInView = useInView(headerRef, { once: true, amount: 0.3 });
+  const mainCardsInView = useInView(mainCardsRef, { once: true, amount: 0.2 });
+  const driverCardInView = useInView(driverCardRef, { once: true, amount: 0.3 });
+  const qrInView = useInView(qrRef, { once: true, amount: 0.5 });
 
-  const apps = [
+  // Real store icons as SVG components
+  const AppleIcon = ({ className = "w-6 h-6" }) => (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+    </svg>
+  );
+
+  const GooglePlayIcon = ({ className = "w-6 h-6" }) => (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        d="M3 20.5v-17c0-1.1.9-2 2-2 .4 0 .7.1 1 .3L19.6 12 6 22.7c-.3.2-.6.3-1 .3-1.1 0-2-.9-2-2zM6 22.7L19.6 12 6 1.3v21.4z"/>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        d="m6 1.3 13.6 10.7-4.2 4.2L6 12V1.3z"/>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        d="m6 12 9.4 4.2 4.2-4.2L6 22.7V12z"/>
+    </svg>
+  );
+
+  // Main apps data - only 2 cards now
+  const mainApps = [
     {
       id: "marketplace",
-      name: "Rentauras Marketplace",
-      description:
-        "Rent premium cars from trusted hosts. Perfect for travelers and car owners.",
-      logo: "/src/assets/Rentaura-Logo.png",
+      name: "Rent a Car Easily",
+      description: "Rent premium cars from trusted hosts. Perfect for travelers and car owners.",
+      logo: "assets/Rentauras-Logo.png",
       icon: Car,
-      color: "from-[#0BB0CD] to-blue-500",
       features: [
         "Browse & rent cars",
-        "Verified hosts",
+        "Verified hosts", 
         "Instant booking",
         "Full insurance",
       ],
     },
     {
-      id: "driver",
-      name: "RentaurasX Driver",
-      description:
-        "Drive with RentaurasX and earn with flexible hours. Eco-friendly rides for professional drivers.",
-      logo: "/src/assets/RentauraX-Logo.png",
-      icon: UserCheck,
-      color: "from-green-500 to-emerald-600",
-      features: [
-        "Flexible earning",
-        "Eco-friendly vehicles",
-        "Professional support",
-        "Fair compensation",
-      ],
-    },
-    {
       id: "passenger",
-      name: "RentaurasX Passenger",
-      description:
-        "Fast, safe rides with professional drivers. Women-to-women service available.",
-      logo: "/src/assets/RentauraX-Logo.png",
+      name: "Book your ride",
+      description: "Fast, safe rides with professional drivers. Women-to-women service available.",
+      logo: "assets/RentaurasX-Logo.png",
       icon: Users,
-      color: "from-purple-500 to-pink-500",
       features: [
         "Safe rides",
         "Women-to-women option",
@@ -61,249 +83,578 @@ const DownloadPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-[#0BB0CD]/10 pt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <motion.div 
+      className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-[#0BB0CD]/10 pt-20 relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      {/* Animated background elements */}
+      <motion.div
+        className="absolute top-20 left-10 w-32 h-32 bg-[#0BB0CD]/5 rounded-full"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.05, 0.15, 0.05],
+          rotate: [0, 180, 360]
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      
+      <motion.div
+        className="absolute top-40 right-20 w-20 h-20 bg-blue-200/20 rounded-full"
+        animate={{
+          y: [0, -30, 0],
+          x: [0, 20, 0],
+          scale: [1, 1.3, 1]
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          repeatType: "reverse"
+        }}
+      />
+
+      <motion.div
+        className="absolute bottom-40 left-1/4 w-16 h-16 bg-green-200/15 rounded-full"
+        animate={{
+          rotate: [0, 360],
+          scale: [1, 1.4, 1],
+          opacity: [0.1, 0.3, 0.1]
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+        
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6">
+        <motion.div 
+          ref={headerRef}
+          className="text-center mb-16"
+          initial="hidden"
+          animate={headerInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          <motion.h1 
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6"
+            variants={textReveal}
+            animate={headerInView ? {
+              backgroundPosition: ["0%", "100%", "0%"]
+            } : {}}
+            transition={{
+              backgroundPosition: { duration: 4, repeat: Infinity, ease: "linear" }
+            }}
+          >
             {t.downloadTheApp}
-          </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          </motion.h1>
+          <motion.p 
+            className="text-lg text-gray-600 max-w-3xl mx-auto"
+            variants={fadeInUp}
+            animate={headerInView ? {
+              opacity: [0.8, 1, 0.8]
+            } : {}}
+            transition={{
+              opacity: { duration: 4, repeat: Infinity, repeatType: "reverse" }
+            }}
+          >
             Download the RENTAURAS apps and experience the future of
             transportation in Morocco
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* Apps Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {apps.map((app, index) => {
-            const IconComponent = app.icon;
-            return (
-              <div
-                key={app.id}
-                className={`rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 
-    ${app.id === "driver" ? "bg-black text-white" : "bg-white text-black"}`}
+        {/* Main Apps Grid - 2 cards only */}
+        <motion.div 
+          ref={mainCardsRef}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
+          initial="hidden"
+          animate={mainCardsInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          {mainApps.map((app, index) => (
+            <motion.div
+              key={app.id}
+              className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
+              variants={staggerItems}
+              whileHover={{
+                ...cardHover,
+                boxShadow: "0 25px 50px rgba(11, 176, 205, 0.2)"
+              }}
+              animate={{
+                y: [0, -5, 0],
+                rotate: index % 2 === 0 ? [0, 1, -1, 0] : [0, -1, 1, 0]
+              }}
+              transition={{
+                y: { duration: 6, repeat: Infinity, repeatType: "reverse", delay: index * 0.5 },
+                rotate: { duration: 8, repeat: Infinity, repeatType: "reverse", delay: index * 0.3 }
+              }}
+            >
+              {/* Background decorative elements */}
+              <motion.div
+                className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-[#0BB0CD]/5 to-transparent rounded-full"
+                animate={{
+                  rotate: [0, 360],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{
+                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                  scale: { duration: 4, repeat: Infinity, repeatType: "reverse" }
+                }}
+              />
+
+              <motion.div
+                className="absolute bottom-4 left-4 w-4 h-4 bg-[#0BB0CD]/20 rounded-full"
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0.2, 0.5, 0.2]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: index
+                }}
+              />
+
+              {/* App Header */}
+              <motion.div 
+                className="text-center mb-8"
+                variants={staggerContainer}
               >
-                {/* App Header */}
-                <div className="text-center mb-8">
-                  <img
-                    src={
-                      app.id === "marketplace"
-                        ? "/src/assets/Rentaura-Logo.png" :
-                        app.id === "driver"
-                        ? "/src/assets/RentauraX-Logo-dark.png"
-                        : "/src/assets/Rentaurax-Logo.png"
-                    }
-                    alt={app.name}
-                    className="w-full h-24 object-contain mx-auto mb-6"
-                  />
-                  <h2 className="text-2xl font-bold mb-3">{app.name}</h2>
-                  <p
-                    className={`text-sm leading-relaxed ${
-                      app.id === "driver" ? "text-gray-300" : "text-gray-600"
-                    }`}
-                  >
-                    {app.description}
-                  </p>
-                </div>
-
-                {/* Features */}
-                <div className="mb-8">
-                  <h4
-                    className={`text-sm font-semibold mb-4 uppercase tracking-wide ${
-                      app.id === "driver" ? "text-gray-200" : "text-gray-800"
-                    }`}
-                  >
-                    Key Features
-                  </h4>
-                  <ul className="space-y-2">
-                    {app.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className={`flex items-center text-sm ${
-                          app.id === "driver"
-                            ? "text-gray-300"
-                            : "text-gray-600"
-                        }`}
-                      >
-                        <div
-                          className={`w-2 h-2 rounded-full mr-3 flex-shrink-0 ${
-                            app.id === "driver" ? "bg-white" : "bg-[#0BB0CD]"
-                          }`}
-                        />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Download Buttons */}
-                <div className="space-y-3">
-                  <button
-                    className={`w-full py-4 px-6 rounded-2xl flex items-center justify-center space-x-3 transition-all duration-300 group 
-      ${
-        app.id === "driver"
-          ? "bg-white text-black hover:bg-gray-100"
-          : "bg-black text-white hover:bg-gray-800"
-      }`}
-                  >
-                    <Apple className="w-6 h-6" />
-                    <div className="text-left">
-                      <div className="text-xs opacity-90">Download on</div>
-                      <div className="text-sm font-semibold">App Store</div>
-                    </div>
-                    <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
-                  </button>
-
-                  <button
-                    className={`w-full py-4 px-6 rounded-2xl flex items-center justify-center space-x-3 transition-all duration-300 group 
-      ${
-        app.id === "driver"
-          ? "bg-white text-black hover:bg-gray-100"
-          : "bg-black text-white hover:bg-gray-800"
-      }`}
-                  >
-                    <div
-                      className={`w-6 h-6 rounded-lg flex items-center justify-center 
-        ${app.id === "driver" ? "bg-black text-white" : "bg-white text-black"}`}
-                    >
-                      ▶
-                    </div>
-                    <div className="text-left">
-                      <div className="text-xs opacity-90">Get it on</div>
-                      <div className="text-sm font-semibold">Google Play</div>
-                    </div>
-                    <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Marketplace Standalone Section */}
-        <div className="bg-gradient-to-r from-[#0BB0CD] to-[#0fc2e1] rounded-3xl p-12 text-white mb-16 overflow-hidden relative">
-          <div className="relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-4xl font-bold mb-6">
-                  Rentauras Marketplace
-                </h3>
-                <p className="text-xl mb-8 opacity-90">
-                  The complete car rental experience. Rent from trusted hosts or
-                  list your car and start earning today.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-white text-[#0BB0CD] py-4 px-8 rounded-2xl font-semibold hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center space-x-2">
-                    <Apple className="w-6 h-6" />
-                    <span>Download for iOS</span>
-                  </button>
-                  <button className="bg-black/20 backdrop-blur-sm text-white py-4 px-8 rounded-2xl font-semibold hover:bg-black/30 transition-colors duration-300 flex items-center justify-center space-x-2">
-                    <Smartphone className="w-6 h-6" />
-                    <span>Download for Android</span>
-                  </button>
-                </div>
-              </div>
-              <div className="text-center">
-                <img
-                  src="/src/assets/Rentaura-Logo.png"
-                  alt="Rentauras Marketplace"
-                  className="h-32 w-auto mx-auto filter brightness-0 invert opacity-80"
+                <motion.img
+                  src={app.logo}
+                  alt={app.name}
+                  className="w-full h-24 object-contain mx-auto mb-6"
+                  variants={imageReveal}
+                  whileHover={{ 
+                    scale: 1.1, 
+                    rotate: [0, 5, -5, 0],
+                    filter: "brightness(1.1)"
+                  }}
+                  transition={{ rotate: { duration: 0.6 } }}
+                  animate={{
+                    y: [0, -3, 0]
+                  }}
+                  transition={{
+                    y: { duration: 4, repeat: Infinity, repeatType: "reverse", delay: index * 0.5 }
+                  }}
                 />
-              </div>
+                <motion.h2 
+                  className="text-2xl font-bold mb-3 text-black"
+                  variants={textReveal}
+                  animate={{
+                    color: ["#000000", "#0BB0CD", "#000000"]
+                  }}
+                  transition={{
+                    color: { duration: 5, repeat: Infinity, repeatType: "reverse", delay: index }
+                  }}
+                >
+                  {app.name}
+                </motion.h2>
+                <motion.p
+                  className="text-sm leading-relaxed text-gray-600"
+                  variants={fadeInUp}
+                >
+                  {app.description}
+                </motion.p>
+              </motion.div>
+
+              {/* Features */}
+              <motion.div 
+                className="mb-8"
+                variants={staggerContainer}
+              >
+                <motion.h4
+                  className="text-sm font-semibold mb-4 uppercase tracking-wide text-gray-800"
+                  variants={fadeInLeft}
+                >
+                  Key Features
+                </motion.h4>
+                <motion.ul 
+                  className="space-y-2"
+                  variants={staggerContainer}
+                >
+                  {app.features.map((feature, idx) => (
+                    <motion.li
+                      key={idx}
+                      className="flex items-center text-sm text-gray-600"
+                      variants={staggerItems}
+                      whileHover={{ x: 5, color: "#0BB0CD" }}
+                    >
+                      <motion.div
+                        className="w-2 h-2 rounded-full mr-3 flex-shrink-0 bg-[#0BB0CD]"
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          opacity: [0.7, 1, 0.7]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          delay: idx * 0.2
+                        }}
+                      />
+                      {feature}
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </motion.div>
+
+              {/* Download Buttons */}
+              <motion.div 
+                className="space-y-3"
+                variants={staggerContainer}
+              >
+                <motion.button
+                  className="w-full flex items-center justify-center space-x-3 bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-xl transition-all duration-300 relative overflow-hidden"
+                  variants={staggerItems}
+                  whileHover={{
+                    ...buttonHover,
+                    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.3)"
+                  }}
+                  whileTap={buttonTap}
+                >
+                  <motion.span
+                    className="absolute inset-0 bg-gradient-to-r from-[#0BB0CD]/20 to-transparent opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <AppleIcon className="w-6 h-6" />
+                  </motion.div>
+                  <div className="text-left relative z-10">
+                    <div className="text-xs opacity-75">Download on the</div>
+                    <div className="text-sm font-semibold">App Store</div>
+                  </div>
+                </motion.button>
+
+                <motion.button
+                  className="w-full flex items-center justify-center space-x-3 bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-xl transition-all duration-300 relative overflow-hidden"
+                  variants={staggerItems}
+                  whileHover={{
+                    ...buttonHover,
+                    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.3)"
+                  }}
+                  whileTap={buttonTap}
+                >
+                  <motion.span
+                    className="absolute inset-0 bg-gradient-to-r from-[#0BB0CD]/20 to-transparent opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <GooglePlayIcon className="w-6 h-6" />
+                  </motion.div>
+                  <div className="text-left relative z-10">
+                    <div className="text-xs opacity-75">Get it on</div>
+                    <div className="text-sm font-semibold">Google Play</div>
+                  </div>
+                </motion.button>
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Driver Card - Small card below main apps */}
+        <motion.div
+          ref={driverCardRef}
+          className="max-w-4xl mx-auto"
+          initial="hidden"
+          animate={driverCardInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          <motion.div
+            className="bg-white rounded-2xl p-6 shadow-lg relative overflow-hidden"
+            variants={scaleIn}
+            whileHover={{
+              ...cardHover,
+              boxShadow: "0 20px 40px rgba(11, 176, 205, 0.15)"
+            }}
+            animate={{
+              y: [0, -3, 0]
+            }}
+            transition={{
+              y: { duration: 5, repeat: Infinity, repeatType: "reverse" }
+            }}
+          >
+            {/* Background decorative elements */}
+            <motion.div
+              className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-[#0BB0CD]/5 to-transparent rounded-full"
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{
+                rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                scale: { duration: 4, repeat: Infinity, repeatType: "reverse" }
+              }}
+            />
+
+            <motion.div
+              className="absolute bottom-4 left-8 w-3 h-3 bg-[#0BB0CD]/30 rounded-full"
+              animate={{
+                scale: [1, 1.8, 1],
+                opacity: [0.3, 0.7, 0.3]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            />
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+              
+              {/* Left - Car Image */}
+              <motion.div 
+                className="flex justify-center"
+                variants={fadeInLeft}
+              >
+                <motion.img
+                  src="assets/rentaurasx/car_cards/audi.svg"
+                  alt="Driver Car"
+                  className="w-full h-48 object-contain"
+                  whileHover={{ 
+                    scale: 1.1, 
+                    rotate: [0, 2, -2, 0] 
+                  }}
+                  animate={{
+                    x: [0, 3, -3, 0],
+                    rotate: [0, 1, -1, 0]
+                  }}
+                  transition={{
+                    x: { duration: 6, repeat: Infinity, repeatType: "reverse" },
+                    rotate: { duration: 4, repeat: Infinity, repeatType: "reverse" }
+                  }}
+                />
+              </motion.div>
+
+              {/* Center - Content */}
+              <motion.div 
+                className="text-center"
+                variants={fadeInUp}
+              >
+                <motion.div 
+                  className="flex items-center justify-center mb-2"
+                  animate={{
+                    color: ["#000000", "#0BB0CD", "#000000"]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  <Zap className="w-5 h-5 mr-2 text-[#0BB0CD]" />
+                  <h3 className="text-lg font-bold">Drive with us</h3>
+                </motion.div>
+                <motion.p 
+                  className="text-sm text-gray-600"
+                  animate={{
+                    opacity: [0.7, 1, 0.7]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  Join our network of professional drivers
+                </motion.p>
+              </motion.div>
+
+              {/* Right - Download Buttons */}
+              <motion.div 
+                className="space-y-3"
+                variants={fadeInRight}
+              >
+                <motion.button
+                  className="w-full flex items-center justify-center space-x-2 bg-black hover:bg-gray-800 text-white py-2 px-3 rounded-lg text-xs transition-all duration-300 relative overflow-hidden"
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <motion.span
+                    className="absolute inset-0 bg-gradient-to-r from-[#0BB0CD]/20 to-transparent opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <AppleIcon className="w-4 h-4" />
+                  </motion.div>
+                  <span className="relative z-10">RentaurasX Driver</span>
+                </motion.button>
+
+                <motion.button
+                  className="w-full flex items-center justify-center space-x-2 bg-black hover:bg-gray-800 text-white py-2 px-3 rounded-lg text-xs transition-all duration-300 relative overflow-hidden"
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <motion.span
+                    className="absolute inset-0 bg-gradient-to-r from-[#0BB0CD]/20 to-transparent opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <GooglePlayIcon className="w-4 h-4" />
+                  </motion.div>
+                  <span className="relative z-10">RentaurasX Driver</span>
+                </motion.button>
+              </motion.div>
             </div>
-          </div>
-          <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full" />
-          <div className="absolute -left-20 -bottom-20 w-60 h-60 bg-white/5 rounded-full" />
-        </div>
-
-        {/* RentaurasX Section */}
-       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-  {/* Driver App */}
-  <div className="bg-black rounded-3xl p-8 border border-gray-800">
-    <div className="text-center mb-6">
-    <img
-        src="/src/assets/RentauraX-Logo-dark.png"
-        className="w-full h-16 object-contain mx-auto mb-6"
-      />
-      <h3 className="text-2xl font-bold text-white mb-2">
-        RentaurasX Driver
-      </h3>
-      <p className="text-gray-300">
-        Start earning as a professional driver
-      </p>
-    </div>
-
-    <div className="space-y-3">
-      <button className="w-full bg-white text-black py-3 px-6 rounded-xl hover:bg-gray-200 transition-colors duration-300">
-        <div className="flex items-center justify-center space-x-2">
-          <Apple className="w-5 h-5 text-black" />
-          <span>Download Driver App</span>
-        </div>
-      </button>
-      <button className="w-full bg-white text-black py-3 px-6 rounded-xl hover:bg-gray-200 transition-colors duration-300">
-        <div className="flex items-center justify-center space-x-2">
-          <Smartphone className="w-5 h-5 text-black" />
-          <span>Get it on Google Play</span>
-        </div>
-      </button>
-    </div>
-  </div>
-
-  {/* Passenger App */}
-  <div className="bg-white rounded-3xl p-8 border border-gray-200">
-    <div className="text-center mb-6">
-      <img
-        src="/src/assets/Rentaurax-Logo.png"
-        className="w-full h-16 object-contain mx-auto mb-6"
-      />
-      <h3 className="text-2xl font-bold text-black mb-2">
-        RentaurasX Passenger
-      </h3>
-      <p className="text-gray-600">Book safe rides instantly</p>
-    </div>
-
-    <div className="space-y-3">
-      <button className="w-full bg-black text-white py-3 px-6 rounded-xl hover:bg-gray-900 transition-colors duration-300">
-        <div className="flex items-center justify-center space-x-2">
-          <Apple className="w-5 h-5 text-white" />
-          <span>Download Passenger App</span>
-        </div>
-      </button>
-      <button className="w-full bg-black text-white py-3 px-6 rounded-xl hover:bg-gray-900 transition-colors duration-300">
-        <div className="flex items-center justify-center space-x-2">
-          <Smartphone className="w-5 h-5 text-white" />
-          <span>Get it on Google Play</span>
-        </div>
-      </button>
-    </div>
-  </div>
-</div>
-
+          </motion.div>
+        </motion.div>
 
         {/* QR Code Section */}
-        <div className="mt-16 text-center bg-white rounded-3xl p-12 shadow-xl">
-          <h3 className="text-3xl font-bold text-black mb-6">
-            Scan to Download Any App
-          </h3>
-          <div className="w-48 h-48 bg-gray-100 rounded-2xl mx-auto mb-6 flex items-center justify-center">
-            <div className="grid grid-cols-8 gap-1">
-              {Array.from({ length: 64 }, (_, i) => (
-                <div
-                  key={i}
-                  className={`w-2 h-2 ${
-                    Math.random() > 0.5 ? "bg-black" : "bg-white"
-                  } rounded-sm`}
-                />
-              ))}
-            </div>
-          </div>
-          <p className="text-gray-600">
-            Point your camera at the QR code to download any RENTAURAS app
-          </p>
-        </div>
+        <motion.div
+          ref={qrRef}
+          className="text-center mt-16"
+          initial="hidden"
+          animate={qrInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          <motion.div
+            className="flex justify-center items-center gap-8"
+            variants={scaleIn}
+          >
+            <motion.div
+              className="w-32 h-32 bg-black rounded-2xl flex items-center justify-center"
+              whileHover={{
+                scale: 1.05,
+                rotate: 5
+              }}
+              animate={{
+                boxShadow: [
+                  "0 0 0 rgba(0, 0, 0, 0.3)",
+                  "0 8px 25px rgba(0, 0, 0, 0.3)",
+                  "0 0 0 rgba(0, 0, 0, 0.3)"
+                ]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            >
+              <div className="grid grid-cols-4 gap-1 p-4">
+                {[...Array(16)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-2 h-2 bg-white rounded-sm"
+                    animate={{
+                      opacity: [0.5, 1, 0.5],
+                      scale: [0.8, 1.2, 0.8]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      delay: i * 0.1
+                    }}
+                  />
+                ))}
+              </div>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp}>
+              <motion.h3 
+                className="text-xl font-bold mb-2"
+                animate={{
+                  color: ["#000000", "#0BB0CD", "#000000"]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              >
+                Scan to Download
+              </motion.h3>
+              <motion.p 
+                className="text-gray-600"
+                animate={{
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              >
+                Get both apps instantly
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Additional floating decorative elements */}
+        <motion.div
+          className="absolute top-32 right-16 w-2 h-2 bg-[#0BB0CD] rounded-full"
+          animate={{
+            opacity: [0, 1, 0],
+            scale: [0.5, 2, 0.5],
+            rotate: [0, 180, 360]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-32 right-32 w-1 h-1 bg-gray-400 rounded-full"
+          animate={{
+            opacity: [0.3, 1, 0.3],
+            y: [0, -15, 0],
+            x: [0, 8, 0]
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: 1
+          }}
+        />
+
+        <motion.div
+          className="absolute top-64 left-20 w-1 h-1 bg-[#0BB0CD] rounded-full"
+          animate={{
+            scale: [1, 2, 1],
+            opacity: [0.5, 1, 0.5],
+            rotate: [0, 360]
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

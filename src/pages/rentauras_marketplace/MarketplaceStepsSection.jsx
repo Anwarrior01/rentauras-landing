@@ -91,6 +91,25 @@ const MarketplaceStepsSection = () => {
                 },
               }}
             >
+            <motion.div
+  className="absolute top-4 right-4 text-8xl font-bold opacity-10 pointer-events-none"
+  style={{ 
+    color: index === 0 ? '#8B5CF6' : 
+           index === 1 ? '#10B981' :
+           index === 2 ? '#EA580C' : '#2563EB'
+  }}
+  animate={{
+    opacity: [0.08, 0.15, 0.08],
+  }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+    repeatType: "reverse",
+    delay: index * 0.5,
+  }}
+>
+  {index + 1}
+</motion.div>
               <motion.div
                 className="text-xs font-medium mb-2 uppercase tracking-wide"
                 style={{ color: step.labelColor }}

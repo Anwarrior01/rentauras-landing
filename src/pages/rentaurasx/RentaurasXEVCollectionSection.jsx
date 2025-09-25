@@ -2,6 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const RentaurasXEVCollectionSection = () => {
+  const cars = [
+    { image: 'TEsla.svg', description: 'Premium EV Car' },
+    { image: '4X4.svg', description: '4X4 EV Car' },
+    { image: 'Mercedes.svg', description: 'EV Truck' },
+    { image: 'audi.svg', description: 'Premium Class EV Car' }
+  ];
+
   return (
     <motion.section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,36 +22,42 @@ const RentaurasXEVCollectionSection = () => {
         <div className="relative overflow-hidden">
           <div className="flex animate-slide">
             {/* Cars */}
-            {[13, 14, 15, 16, 17, 18, 19, 21, 22].map((carNumber, index) => (
+            {cars.map((car, index) => (
               <div 
-                key={`car-${carNumber}`} 
-                className={`flex-shrink-0 mx-4 bg-transparent rounded-3xl p-8 transform transition-transform duration-300 hover:scale-105 ${
+                key={`car-${index}`} 
+                className={`flex-shrink-0 mx-4 bg-white rounded-xl p-8 shadow-lg transform transition-transform duration-300 hover:scale-105 ${
                   index % 2 === 0 ? 'rotate-1 hover:rotate-0' : '-rotate-2 hover:rotate-3'
                 } min-w-[300px] max-w-[500px]`}
               >
-                <div className="flex justify-center rounded-3xl">
+                <div className="flex justify-center rounded-xl mb-4">
                   <img 
-                    src={`assets/rentaurasx/car_cards/${carNumber}.svg`} 
-                    alt={`Car ${carNumber}`} 
-                    className="w-full h-full object-contain rounded-3xl" 
+                    src={`assets/rentaurasx/car_cards/${car.image}`} 
+                    alt={car.description} 
+                    className="w-full h-48 object-contain rounded-xl" 
                   />
+                </div>
+                <div className="text-center">
+                  <p className="text-sm text-gray-600 font-medium">{car.description}</p>
                 </div>
               </div>
             ))}
             {/* Duplicate for infinite loop */}
-            {[13, 14, 15, 16, 17, 18, 19, 21, 22].map((carNumber, index) => (
+            {cars.map((car, index) => (
               <div 
-                key={`car-duplicate-${carNumber}`} 
-                className={`flex-shrink-0 mx-4 bg-transparent rounded-3xl p-8 transform transition-transform duration-300 hover:scale-105 ${
+                key={`car-duplicate-${index}`} 
+                className={`flex-shrink-0 mx-4 bg-white rounded-xl p-8 shadow-lg transform transition-transform duration-300 hover:scale-105 ${
                   index % 2 === 0 ? 'rotate-1 hover:rotate-0' : '-rotate-1 hover:rotate-0'
                 } min-w-[300px] max-w-[300px]`}
               >
-                <div className="flex justify-center">
+                <div className="flex justify-center rounded-xl mb-4">
                   <img 
-                    src={`assets/rentaurasx/car_cards/${carNumber}.svg`} 
-                    alt={`Car ${carNumber}`} 
-                    className="w-full h-full object-contain border rounded-2xl" 
+                    src={`assets/rentaurasx/car_cards/${car.image}`} 
+                    alt={car.description} 
+                    className="w-full h-48 object-contain rounded-xl" 
                   />
+                </div>
+                <div className="text-center">
+                  <p className="text-sm text-gray-600 font-medium">{car.description}</p>
                 </div>
               </div>
             ))}
@@ -56,7 +69,7 @@ const RentaurasXEVCollectionSection = () => {
       <style jsx>{`
         .animate-slide {
           animation: slide 30s linear infinite;
-          width: calc(300px * 18 + 32px * 18);
+          width: calc(300px * 8 + 32px * 8);
         }
         
         @keyframes slide {
@@ -64,7 +77,7 @@ const RentaurasXEVCollectionSection = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-300px * 9 - 32px * 9));
+            transform: translateX(calc(-300px * 4 - 32px * 4));
           }
         }
         

@@ -69,7 +69,7 @@ const MarketplaceScreenshotsSection = () => {
             variants={fadeInRight}
           >
             <motion.img
-              src="assets/rentauras/first-screen.png"
+              src="assets/rentauras/payement-image-Rentauras-Marketplace.svg"
               alt="App Screenshot 1"
               className="max-w-sm rounded-3xl shadow-2xl"
               whileHover={{
@@ -94,7 +94,7 @@ const MarketplaceScreenshotsSection = () => {
         >
           <motion.div className="flex justify-center" variants={fadeInLeft}>
             <motion.img
-              src="assets/rentauras/second-screen.png"
+              src="assets/rentauras/search-car-rentauras-Marketpalce.svg"
               alt="App Screenshot 2"
               className="max-w-sm rounded-3xl shadow-2xl"
               whileHover={{

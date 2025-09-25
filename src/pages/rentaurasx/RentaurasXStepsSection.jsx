@@ -84,6 +84,21 @@ const RentaurasXStepsSection = () => {
                 },
               }}
             >
+            <motion.div
+  className="absolute top-4 right-4 text-8xl font-bold opacity-10 pointer-events-none"
+  style={{ color: step.accentColor }}
+  animate={{
+    opacity: [0.08, 0.15, 0.08],
+  }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+    repeatType: "reverse",
+    delay: index * 0.5,
+  }}
+>
+  {step.id}
+</motion.div>
               <motion.div
                 className="text-xs text-[#0BB0CD] font-medium mb-2 uppercase tracking-wide"
                 animate={{

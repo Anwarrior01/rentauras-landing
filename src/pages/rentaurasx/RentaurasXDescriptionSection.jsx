@@ -42,6 +42,31 @@ const RentaurasXDescriptionSection = () => {
           Safe rides, verified drivers, and sustainable 
           mobility for the modern world.
         </motion.h2>
+        <motion.h2
+          className="text-3xl sm:text-2xl font-bold text-[#0BB0CD] mb-2"
+          variants={textReveal}
+          animate={
+            descInView
+              ? {
+                  backgroundImage: [
+                    "linear-gradient(90deg, #000 0%, #000 100%)",
+                    "linear-gradient(90deg, #000 0%, #0BB0CD 50%, #000 100%)",
+                    "linear-gradient(90deg, #000 0%, #000 100%)",
+                  ],
+                }
+              : {}
+          }
+          style={{ backgroundClip: "text", WebkitBackgroundClip: "text" }}
+          transition={{
+            backgroundImage: {
+              duration: 4,
+              repeat: Infinity,
+              repeatType: "reverse",
+            },
+          }}
+        >
+          How to use <span className="text-black">RentaurasX?</span> 
+        </motion.h2>
       </div>
     </motion.section>
   );

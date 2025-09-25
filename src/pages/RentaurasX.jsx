@@ -24,7 +24,7 @@ const RentaurasXPage = ({ setCurrentPage }) => {
       
       <RentaurasXStepsSection />
       
-      <RentaurasXWhyChooseSection />
+      <RentaurasXWhyChooseSection setCurrentPage={setCurrentPage}/>
       
       <RentaurasXEVCollectionSection />
       
