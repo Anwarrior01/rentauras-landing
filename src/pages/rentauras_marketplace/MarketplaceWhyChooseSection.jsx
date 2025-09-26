@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   fadeInUp,
   staggerContainer, 
@@ -10,26 +11,27 @@ import {
 } from '../../utils/animations';
 
 const MarketplaceWhyChooseSection = () => {
+  const { t } = useLanguage();
   const whyRef = useRef(null);
   const whyInView = useInView(whyRef, { once: true, amount: 0.2 });
 
   const featuresFirstRow = [
     {
       image: "assets/rentauras/why_rentauras/Active-Support-cuate.svg",
-      title: "24/7 Active Support",
-      description: "Round-the-clock assistance for all your rental needs.",
+      title: t.marketplace247Support,
+      description: t.marketplace247SupportDesc,
       bgColor: "#f3e8ff",
     },
     {
       image: "assets/rentauras/why_rentauras/Contact-us-cuate.svg",
-      title: "Easy Contact",
-      description: "Reach us anytime through multiple channels.",
+      title: t.marketplaceEasyContact,
+      description: t.marketplaceEasyContactDesc,
       bgColor: "#ecfdf5",
     },
     {
       image: "assets/rentauras/why_rentauras/Insurance-cuate.svg",
-      title: "Full Insurance Coverage",
-      description: "Drive with peace of mind with comprehensive coverage.",
+      title: t.marketplaceInsurance,
+      description: t.marketplaceInsuranceDesc,
       bgColor: "#fef3c7",
     },
   ];
@@ -37,14 +39,14 @@ const MarketplaceWhyChooseSection = () => {
   const featuresSecondRow = [
     {
       image: "assets/rentauras/why_rentauras/Payment-Information-cuate.svg",
-      title: "Secure Payments",
-      description: "Your payment information is always protected.",
+      title: t.marketplaceSecurePayments,
+      description: t.marketplaceSecurePaymentsDesc,
       bgColor: "#dbeafe",
     },
     {
       image: "assets/rentauras/why_rentauras/Profile data-amico.svg",
-      title: "Verified Profiles",
-      description: "All hosts are verified for your safety and security.",
+      title: t.marketplaceVerifiedProfiles,
+      description: t.marketplaceVerifiedProfilesDesc,
       bgColor: "#f3e8ff",
     },
   ];
@@ -62,7 +64,7 @@ const MarketplaceWhyChooseSection = () => {
             className="text-3xl sm:text-4xl font-bold text-black mb-8"
             variants={textReveal}
           >
-            Why Choose Rentauras Marketplace?
+            {t.marketplaceWhyChooseTitle}
           </motion.h2>
         </motion.div>
 

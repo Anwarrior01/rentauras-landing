@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   staggerContainer, 
   staggerItems,
@@ -10,29 +11,30 @@ import {
 } from '../../utils/animations';
 
 const RentaurasXFAQSection = () => {
+  const { t } = useLanguage();
   const faqRef = useRef(null);
   const faqInView = useInView(faqRef, { once: true, amount: 0.3 });
 
   const faqs = [
     {
-      question: "What is RentaurasX and how does it work?",
-      answer: "RentaurasX is a ride-hailing service that connects passengers with verified professional drivers. Simply request a ride through our app and get picked up in minutes."
+      question: t.whatIsRentaurasX,
+      answer: t.rentaurasXIsRideHailing
     },
     {
-      question: "What makes RentaurasX different from other ride services?",
-      answer: "We're the first in Morocco to offer women-to-women service, use eco-friendly vehicles, and all our drivers are verified professionals, not strangers."
+      question: t.whatMakesDifferent,
+      answer: t.firstInMoroccoOffer
     },
     {
-      question: "Are your vehicles eco-friendly?", 
-      answer: "Yes! We prioritize electric and hybrid vehicles to reduce environmental impact and provide sustainable transportation."
+      question: t.areVehiclesEcoFriendly, 
+      answer: t.yesPrioritizeElectric
     },
     {
-      question: "How does the women-to-women service work?",
-      answer: "Female passengers can choose to be driven exclusively by female drivers, ensuring comfort and safety for women travelers."
+      question: t.howWomenToWomenWorks,
+      answer: t.femalePassengersChoose
     },
     {
-      question: "What payment methods do you accept?",
-      answer: "We accept all major credit cards, debit cards, and digital payment methods. All payments are cashless and secure."
+      question: t.whatPaymentMethods,
+      answer: t.acceptAllMajorCards
     }
   ];
 
@@ -48,7 +50,7 @@ const RentaurasXFAQSection = () => {
           className="text-3xl font-bold text-black mb-12 text-center"
           variants={textReveal}
         >
-          Frequently asked questions
+          {t.frequentlyAskedQuestions}
         </motion.h2>
         
         <motion.div className="space-y-6" variants={staggerContainer}>

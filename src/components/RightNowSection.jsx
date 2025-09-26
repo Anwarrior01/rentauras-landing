@@ -22,37 +22,37 @@ const RightNowSection = () => {
   const features = [
     {
       id: 'women',
-      title: 'Women to Women Service',
-      description: 'First in Morocco to introduce women-to-women service, where female passengers are exclusively driven by verified female drivers for enhanced safety and comfort.',
+      title: t.womenServiceTitle,
+      description: t.womenServiceDesc,
       image: 'assets/By-my-car-cuate.svg',
       newImage: 'assets/women-for-women-Rentauras3-X.svg',
-      category: 'EXCLUSIVE',
-      date: 'Dec 15',
+      category: t.womenServiceCategory,
+      date: t.womenServiceDate,
       isSpecial: true
     },
     {
       id: 'eco',
-      title: 'Eco-Friendly Transportation',
-      description: 'Leading the way in sustainable mobility with electric and hybrid vehicles across our platform, protecting Morocco\'s environment for future generations.',
+      title: t.ecoFriendlyTitle,
+      description: t.ecoFriendlyDesc,
       image: 'assets/Environment-cuate.svg',
-      category: 'SUSTAINABILITY',
-      date: 'Nov 20'
+      category: t.ecoFriendlyCategory,
+      date: t.ecoFriendlyDate
     },
     {
       id: 'ecosystem',
-      title: 'Integrated Ecosystem',
-      description: 'Complete transportation ecosystem combining car rentals and ride-hailing services under one unified platform, revolutionizing how Morocco moves.',
+      title: t.ecosystemTitle,
+      description: t.ecosystemDesc,
       image: 'assets/Back-to-back-cuate.svg',
-      category: 'TECHNOLOGY',
-      date: 'Oct 08'
+      category: t.ecosystemCategory,
+      date: t.ecosystemDate
     },
     {
       id: 'pioneer',
-      title: 'Transportation Pioneer',
-      description: 'Morocco\'s first fully digital transportation platform, setting new standards for innovation, safety, and user experience in the MENA region.',
+      title: t.pioneerTitle,
+      description: t.pioneerDesc,
       image: 'assets/Teamwork-cuate.svg',
-      category: 'LEADERSHIP',
-      date: 'Sep 12'
+      category: t.pioneerCategory,
+      date: t.pioneerDate
     }
   ];
 
@@ -292,7 +292,6 @@ const RightNowSection = () => {
                     }}
                   />
                 </motion.div>
-           
               </motion.div>
 
               {/* Simple floating elements for special card - No stars, only hearts and flowers */}

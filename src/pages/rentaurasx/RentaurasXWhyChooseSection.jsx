@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { Heart, X } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
+import { X } from "lucide-react";
 import {
   staggerContainer,
   staggerItems,
@@ -11,6 +12,7 @@ import {
 } from "../../utils/animations";
 
 const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
+  const { t } = useLanguage();
   const whyRef = useRef(null);
   const whyInView = useInView(whyRef, { once: true, amount: 0.2 });
   const [showWomenModal, setShowWomenModal] = useState(false);
@@ -18,35 +20,33 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
   const features = [
     {
       image: "assets/rentaurasx/why_rentauras/Women's-EqualityDay-cuate.svg",
-      title: "Women to Women Service",
-      description:
-        "Exclusive service where female passengers are driven by female drivers.",
+      titleKey: "womenToWomenService",
+      descriptionKey: "exclusiveServiceFemale",
       bgColor: "#fdf2f8",
       isSpecial: true,
     },
     {
       image: "assets/rentaurasx/why_rentauras/Electric-car-cuate.svg",
-      title: "Eco-Friendly Rides",
-      description:
-        "Electric and hybrid vehicles for sustainable transportation.",
+      titleKey: "ecoFriendlyRides",
+      descriptionKey: "electricHybridVehicles",
       bgColor: "#f0fdf4",
     },
     {
       image: "assets/rentaurasx/why_rentauras/driving-cuate.svg",
-      title: "Professional Drivers",
-      description: "All our drivers are verified professionals, not strangers.",
+      titleKey: "professionalDrivers",
+      descriptionKey: "verifiedProfessionals",
       bgColor: "#fef3c7",
     },
     {
       image: "assets/rentaurasx/why_rentauras/Directions-cuate.svg",
-      title: "Real-time Tracking",
-      description: "Track your ride in real-time for complete peace of mind.",
+      titleKey: "realTimeTrackingTitle",
+      descriptionKey: "trackRideRealTime",
       bgColor: "#dbeafe",
     },
     {
       image: "assets/rentaurasx/why_rentauras/Credit-card-cuate.svg",
-      title: "Fair & Transparent Pricing",
-      description: "No surge pricing, no hidden fees. Fair rates for everyone.",
+      titleKey: "fairTransparentPricing",
+      descriptionKey: "noSurgePricing",
       bgColor: "#f3e8ff",
     },
   ];
@@ -82,7 +82,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
               className="text-3xl sm:text-4xl font-bold text-black mb-8"
               variants={textReveal}
             >
-              Why Choose RentaurasX?
+              {t.whyChooseRentaurasX}
             </motion.h2>
           </motion.div>
 
@@ -144,7 +144,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                     whileHover={{ opacity: 1, y: -5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    Click me
+                    {t.clickMe}
                   </motion.div>
                 )}
 
@@ -173,7 +173,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                 >
                   <motion.img
                     src={feature.image}
-                    alt={feature.title}
+                    alt={t[feature.titleKey]}
                     className="w-64 h-64"
                     animate={{
                       y: [0, -5, 0],
@@ -192,7 +192,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                   className="text-xl font-bold text-black mb-3 text-center"
                   variants={textReveal}
                 >
-                  {feature.title}
+                  {t[feature.titleKey]}
                   {feature.isSpecial && (
                     <motion.span
                       className="ml-2 inline-block"
@@ -214,7 +214,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                   className="text-gray-600 text-center"
                   variants={fadeInUp}
                 >
-                  {feature.description}
+                  {t[feature.descriptionKey]}
                 </motion.p>
 
                 {/* Floating hearts for special card */}
@@ -291,7 +291,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                 >
                   <motion.img
                     src={feature.image}
-                    alt={feature.title}
+                    alt={t[feature.titleKey]}
                     className="w-64 h-64"
                     animate={{
                       y: [0, -8, 0],
@@ -309,13 +309,13 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                   className="text-xl font-bold text-black mb-3 text-center"
                   variants={textReveal}
                 >
-                  {feature.title}
+                  {t[feature.titleKey]}
                 </motion.h3>
                 <motion.p
                   className="text-gray-600 text-center"
                   variants={fadeInUp}
                 >
-                  {feature.description}
+                  {t[feature.descriptionKey]}
                 </motion.p>
               </motion.div>
             ))}
@@ -349,7 +349,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Close Button - Fixed */}
+              {/* Close Button */}
               <motion.button
                 onClick={closeWomenModal}
                 className="absolute top-6 right-6 p-2 rounded-xl hover:bg-pink-100 transition-colors duration-300 z-10"
@@ -431,10 +431,10 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                 </motion.div>
 
                 <motion.h3 className="text-3xl font-bold text-gray-800 mb-2">
-                  Women to Women Service
+                  {t.womenToWomenService}
                 </motion.h3>
                 <motion.p className="text-pink-600 font-medium">
-                  Safety, Comfort & Trust - First in Morocco
+                  {t.safetyComfortTrust}
                 </motion.p>
               </motion.div>
 
@@ -446,36 +446,31 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                 transition={{ delay: 0.3, duration: 0.5 }}
               >
                 <p className="text-gray-700 leading-relaxed text-center">
-                  Experience the ultimate in safe and comfortable transportation
-                  designed specifically for women. Our female drivers provide a
-                  secure environment where women passengers can travel with
-                  complete peace of mind.
+                  {t.experienceUltimate}
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                   <div className="bg-pink-50 p-4 rounded-lg border border-pink-100">
                     <h4 className="font-semibold text-gray-800 mb-2">
-                      For Female Passengers
+                      {t.forFemalePassengers}
                     </h4>
                     <p className="text-sm text-gray-600">
-                      Book rides with verified professional female drivers who
-                      understand your safety concerns and comfort needs.
+                      {t.bookRidesVerified}
                     </p>
                   </div>
 
                   <div className="bg-pink-50 p-4 rounded-lg border border-pink-100">
                     <h4 className="font-semibold text-gray-800 mb-2">
-                      For Female Drivers
+                      {t.forFemaleDrivers}
                     </h4>
                     <p className="text-sm text-gray-600">
-                      Join our community of professional female drivers and
-                      provide safe transportation while earning flexible income.
+                      {t.joinCommunity}
                     </p>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Action Buttons - Unified color and download redirect */}
+              {/* Action Buttons */}
               <motion.div
                 className="flex space-x-4"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -491,7 +486,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Join as Female Passenger
+                  {t.joinAsFemalePassenger}
                 </motion.button>
 
                 <motion.button
@@ -503,7 +498,7 @@ const RentaurasXWhyChooseSection = ({ setCurrentPage }) => {
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Join as Female Driver
+                  {t.joinAsFemaleDriver}
                 </motion.button>
               </motion.div>
             </motion.div>

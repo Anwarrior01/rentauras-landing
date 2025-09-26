@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import { Star, Shield } from 'lucide-react';
 import { 
   fadeInUp,
@@ -11,6 +12,7 @@ import {
 } from '../../utils/animations';
 
 const MarketplaceSecuritySection = ({ setCurrentPage }) => {
+  const { t } = useLanguage();
   const securityRef = useRef(null);
   const securityInView = useInView(securityRef, { once: true, amount: 0.5 });
 
@@ -56,23 +58,21 @@ const MarketplaceSecuritySection = ({ setCurrentPage }) => {
               color: { duration: 3, repeat: Infinity, repeatType: "reverse" },
             }}
           >
-            SECURITY & TRUST
+            {t.marketplaceSecuritySubtitle}
           </motion.div>
 
           <motion.h2
             className="text-3xl font-bold text-black mb-6"
             variants={textReveal}
           >
-            Your safety, always on
+            {t.marketplaceSecurityTitle}
           </motion.h2>
 
           <motion.p
             className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
             variants={fadeInUp}
           >
-            We monitor your transactions around the clock and secure your data
-            with top-level protection. So you can rent, drive, and smile,
-            stress-free.
+            {t.marketplaceSecurityDescription}
           </motion.p>
 
           <motion.div className="flex justify-center mb-8" variants={scaleIn}>
@@ -122,7 +122,10 @@ const MarketplaceSecuritySection = ({ setCurrentPage }) => {
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             />
-            <span className="relative z-10">Download Rentauras</span>
+            <span className="relative z-10">
+              {t.marketplaceDownloadAction}{" "}
+              <span className="text-[#0BB0CD]">Marketplace</span>
+            </span>
           </motion.button>
         </motion.div>
       </div>

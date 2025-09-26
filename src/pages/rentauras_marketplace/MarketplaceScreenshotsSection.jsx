@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import { Check } from 'lucide-react';
 import { 
   fadeInLeft, 
@@ -12,6 +13,7 @@ import {
 } from '../../utils/animations';
 
 const MarketplaceScreenshotsSection = () => {
+  const { t } = useLanguage();
   const screensRef = useRef(null);
   const screensInView = useInView(screensRef, { once: true, amount: 0.3 });
 
@@ -33,14 +35,13 @@ const MarketplaceScreenshotsSection = () => {
               className="text-3xl font-bold text-black mb-6"
               variants={textReveal}
             >
-              Browse & Book Instantly
+              {t.marketplaceBrowseBookTitle}
             </motion.h3>
             <motion.p
               className="text-lg text-gray-600 mb-8"
               variants={fadeInUp}
             >
-              Discover thousands of cars in your area. Filter by price,
-              location, and features to find your perfect ride.
+              {t.marketplaceBrowseBookDesc}
             </motion.p>
             <motion.div
               className="flex items-center gap-4"
@@ -52,7 +53,7 @@ const MarketplaceScreenshotsSection = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <Check className="w-5 h-5 text-[#0BB0CD]" />
-                <span className="text-gray-700">Instant booking</span>
+                <span className="text-gray-700">{t.marketplaceInstantBooking}</span>
               </motion.div>
               <motion.div
                 className="flex items-center gap-2"
@@ -60,7 +61,7 @@ const MarketplaceScreenshotsSection = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <Check className="w-5 h-5 text-[#0BB0CD]" />
-                <span className="text-gray-700">No hidden fees</span>
+                <span className="text-gray-700">{t.marketplaceNoHiddenFees}</span>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -115,14 +116,13 @@ const MarketplaceScreenshotsSection = () => {
               className="text-3xl font-bold text-slate-800 mb-6"
               variants={textReveal}
             >
-              Secure & Simple Experience
+              {t.marketplaceSecureSimpleTitle}
             </motion.h3>
             <motion.p
               className="text-lg text-gray-600 mb-8"
               variants={fadeInUp}
             >
-              Your safety is our priority. All transactions are secured and
-              all hosts are verified before joining our platform.
+              {t.marketplaceSecureSimpleDesc}
             </motion.p>
             <motion.div
               className="flex items-center gap-4"
@@ -134,7 +134,7 @@ const MarketplaceScreenshotsSection = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <Check className="w-5 h-5 text-[#0BB0CD]" />
-                <span className="text-gray-700">Verified hosts</span>
+                <span className="text-gray-700">{t.marketplaceVerifiedHosts}</span>
               </motion.div>
               <motion.div
                 className="flex items-center gap-2"
@@ -142,7 +142,7 @@ const MarketplaceScreenshotsSection = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <Check className="w-5 h-5 text-[#0BB0CD]" />
-                <span className="text-gray-700">Secure payments</span>
+                <span className="text-gray-700">{t.marketplaceSecurePaymentsFeature}</span>
               </motion.div>
             </motion.div>
           </motion.div>

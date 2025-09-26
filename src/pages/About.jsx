@@ -16,8 +16,10 @@ import {
   cardHover,
 } from "../utils/animations";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 const AboutPage = () => {
+  const { t } = useLanguage();
   const heroRef = useRef(null);
   const visionRef = useRef(null);
   const servicesRef = useRef(null);
@@ -35,8 +37,9 @@ const AboutPage = () => {
 
   const handleNavigation = (path) => {
     navigate(path);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   return (
     <div className="min-h-screen bg-white pt-16">
       {/* Hero Section */}
@@ -46,7 +49,6 @@ const AboutPage = () => {
         initial="hidden"
         animate={heroInView ? "visible" : "hidden"}
       >
-        {/* Background animated elements */}
         <motion.div
           className="absolute top-20 left-10 w-24 h-24 bg-[#0BB0CD]/10 rounded-full"
           animate={{
@@ -60,7 +62,6 @@ const AboutPage = () => {
             ease: "linear",
           }}
         />
-
         <motion.div
           className="absolute top-40 right-20 w-16 h-16 bg-purple-200/40 rounded-full"
           animate={{
@@ -74,10 +75,8 @@ const AboutPage = () => {
             repeatType: "reverse",
           }}
         />
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
             <motion.div
               className="text-center lg:text-left"
               variants={staggerContainer}
@@ -86,26 +85,24 @@ const AboutPage = () => {
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight"
                 variants={textReveal}
               >
-                Revolutionizing{" "}
+                {t.heroTitlePart1}{" "}
                 <motion.span
-                  className="bg-[#0BB0CD] text-white px-4 py-2 rounded-xl"
+                  className="bg-[#0BB0CD] text-white px-2 py-2 rounded-xl"
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0 6px 20px rgba(11, 176, 205, 0.4)",
                   }}
                 >
-                  Transportation
+                  {t.heroTitleHighlight}
                 </motion.span>{" "}
-                in Morocco
+                {t.heroTitlePart2}
               </motion.h1>
 
               <motion.p
                 className="text-lg text-gray-600 mb-8 max-w-2xl"
                 variants={fadeInLeft}
               >
-                RENTAURAS Technology is pioneering the future of mobility in
-                Morocco, connecting communities through innovative car rental
-                and ride-hailing solutions.
+                {t.heroDescription}
               </motion.p>
 
               <motion.button
@@ -123,15 +120,14 @@ const AboutPage = () => {
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 />
-                <span className="relative z-10"> Join Our Journey</span>
+                <span className="relative z-10">{t.joinOurJourney}</span>
               </motion.button>
             </motion.div>
 
-            {/* Right Image */}
             <motion.div className="relative" variants={imageReveal}>
               <motion.img
                 src="assets/about-us-for-Rentauras.svg"
-                alt="About Rentauras"
+                alt={t.heroImageAlt}
                 className="w-full h-auto"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
@@ -153,7 +149,7 @@ const AboutPage = () => {
             <motion.div variants={fadeInLeft}>
               <motion.img
                 src="assets/Teamwork-cuate.svg"
-                alt="Our Vision"
+                alt={t.visionImageAlt}
                 className="w-full h-auto"
                 whileHover={{ scale: 1.05, rotate: [0, 1, -1, 0] }}
                 transition={{ duration: 0.6 }}
@@ -165,27 +161,21 @@ const AboutPage = () => {
                 className="text-3xl sm:text-4xl font-bold text-black mb-6"
                 variants={textReveal}
               >
-                Our Vision for Morocco's Future
+                {t.ourVisionTitle}
               </motion.h2>
 
               <motion.p
                 className="text-lg text-gray-600 mb-6 leading-relaxed"
                 variants={fadeInUp}
               >
-                Since our founding, RENTAURAS has been committed to transforming
-                how Morocco moves. We envision a connected nation where
-                transportation is accessible, sustainable, and secure for
-                everyone.
+                {t.ourVisionParagraph1}
               </motion.p>
 
               <motion.p
                 className="text-lg text-gray-600 leading-relaxed"
                 variants={fadeInUp}
               >
-                Our mission extends beyond just providing rides - we're building
-                the infrastructure for Morocco's digital transformation in
-                mobility, creating jobs, and fostering economic growth across
-                all regions.
+                {t.ourVisionParagraph2}
               </motion.p>
             </motion.div>
           </div>
@@ -205,14 +195,13 @@ const AboutPage = () => {
               className="text-3xl sm:text-4xl font-bold text-black mb-6"
               variants={textReveal}
             >
-              Two Platforms, One Vision
+              {t.servicesTitle}
             </motion.h2>
             <motion.p
               className="text-lg text-gray-600 max-w-3xl mx-auto"
               variants={fadeInUp}
             >
-              RENTAURAS Technology operates through two innovative platforms,
-              each designed to serve different mobility needs across Morocco.
+              {t.servicesDescription}
             </motion.p>
           </motion.div>
 
@@ -241,14 +230,14 @@ const AboutPage = () => {
 
               <motion.img
                 src="assets/Rentauras-Logo.png"
-                alt="Rentauras Marketplace"
+                alt={t.marketplaceLogoAlt}
                 className="h-16 object-contain mb-6"
                 whileHover={{ scale: 1.05 }}
               />
 
               <motion.img
                 src="assets/Car-rental-cuate.svg"
-                alt="Car Rental"
+                alt={t.marketplaceImageAlt}
                 className="w-full h-48 object-contain mb-6"
                 whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }}
                 transition={{ duration: 0.8 }}
@@ -258,21 +247,19 @@ const AboutPage = () => {
                 className="text-2xl font-bold text-black mb-4"
                 variants={textReveal}
               >
-                Rentauras Marketplace
+                {t.marketplaceTitle}
               </motion.h3>
 
               <motion.p className="text-gray-600 mb-6" variants={fadeInUp}>
-                Peer-to-peer car rental platform connecting car owners with
-                renters. Empowering individuals to monetize their vehicles while
-                providing affordable access to transportation across Morocco.
+                {t.marketplaceDescription}
               </motion.p>
 
               <motion.button
-                onClick={() => handleNavigation("/marketplace") }
+                onClick={() => handleNavigation("/marketplace")}
                 className="text-[#0BB0CD] hover:text-[#0BB0CD]/80 font-medium transition-colors duration-300"
                 whileHover={{ x: 5 }}
               >
-                Learn More →
+                {t.marketplaceButton}
               </motion.button>
             </motion.div>
 
@@ -300,14 +287,14 @@ const AboutPage = () => {
 
               <motion.img
                 src="assets/RentaurasX-Logo.png"
-                alt="RentaurasX"
+                alt={t.rentaurasXLogoAlt}
                 className="h-16 object-contain mb-6"
                 whileHover={{ scale: 1.05 }}
               />
 
               <motion.img
                 src="assets/Directions-cuate.svg"
-                alt="Ride Hailing"
+                alt={t.rentaurasXImageAlt}
                 className="w-full h-48 object-contain mb-6"
                 whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
                 transition={{ duration: 0.8 }}
@@ -317,13 +304,11 @@ const AboutPage = () => {
                 className="text-2xl font-bold text-black mb-4"
                 variants={textReveal}
               >
-                RentaurasX
+                {t.rentaurasXTitle}
               </motion.h3>
 
               <motion.p className="text-gray-600 mb-6" variants={fadeInUp}>
-                Eco-friendly ride-hailing service featuring women-to-women
-                rides, electric vehicles, and professional drivers. Leading
-                Morocco's transition to sustainable urban mobility.
+                {t.rentaurasXDescription}
               </motion.p>
 
               <motion.button
@@ -331,14 +316,15 @@ const AboutPage = () => {
                 className="text-[#0BB0CD] hover:text-[#0BB0CD]/80 font-medium transition-colors duration-300"
                 whileHover={{ x: 5 }}
               >
-                Discover More →
+                {t.rentaurasXButton}
               </motion.button>
             </motion.div>
           </div>
         </div>
       </motion.section>
 
-      {/* Impact Section */}
+
+{/* Impact Section */}
       <motion.section
         ref={impactRef}
         className="py-20 bg-white"
@@ -351,7 +337,7 @@ const AboutPage = () => {
               className="text-3xl sm:text-4xl font-bold text-black mb-6"
               variants={textReveal}
             >
-              Our Impact on Morocco
+              {t.ourImpactTitle}
             </motion.h2>
           </motion.div>
 
@@ -359,23 +345,20 @@ const AboutPage = () => {
             {[
               {
                 icon: <Users className="w-12 h-12 text-[#0BB0CD]" />,
-                title: "Community Building",
-                description:
-                  "Connecting thousands of Moroccans, creating trust-based networks that strengthen local communities.",
+                title: t.communityBuilding,
+                description: t.communityBuildingDescription,
                 image: "assets/Back-to-back-cuate.svg",
               },
               {
                 icon: <Zap className="w-12 h-12 text-[#0BB0CD]" />,
-                title: "Economic Growth",
-                description:
-                  "Generating income opportunities for drivers and car owners while supporting Morocco's digital economy.",
+                title: t.economicGrowth,
+                description: t.economicGrowthDescription,
                 image: "assets/Business-deal-cuate.svg",
               },
               {
                 icon: <Shield className="w-12 h-12 text-[#0BB0CD]" />,
-                title: "Safety Innovation",
-                description:
-                  "Pioneering women-to-women services and implementing advanced safety features for all users.",
+                title: t.safetyInnovation,
+                description: t.safetyInnovationDescription,
                 image: "assets/By-my-car-cuate.svg",
               },
             ].map((impact, index) => (
@@ -440,34 +423,30 @@ const AboutPage = () => {
               className="text-3xl sm:text-4xl font-bold text-black mb-6"
               variants={textReveal}
             >
-              Built on Strong Values
+              {t.builtOnStrongValues}
             </motion.h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "Innovation",
-                description:
-                  "Continuously pushing boundaries to create better transportation solutions.",
+                title: t.innovation,
+                description: t.innovationDescription,
                 color: "#8b5cf6",
               },
               {
-                title: "Trust",
-                description:
-                  "Building secure, transparent relationships between all users in our ecosystem.",
+                title: t.trust,
+                description: t.trustDescription,
                 color: "#10b981",
               },
               {
-                title: "Sustainability",
-                description:
-                  "Promoting eco-friendly practices and electric vehicles for a greener Morocco.",
+                title: t.sustainability,
+                description: t.sustainabilityDescription,
                 color: "#0BB0CD",
               },
               {
-                title: "Inclusivity",
-                description:
-                  "Ensuring transportation access for everyone, including women-only services.",
+                title: t.inclusivity,
+                description: t.inclusivityDescription,
                 color: "#f59e0b",
               },
             ].map((value, index) => (
@@ -527,17 +506,14 @@ const AboutPage = () => {
               className="text-3xl sm:text-4xl font-bold mb-8"
               variants={textReveal}
             >
-              Shaping Morocco's Transportation Future
+              {t.shapingFuture}
             </motion.h2>
 
             <motion.p
               className="text-xl mb-8 max-w-4xl mx-auto opacity-90"
               variants={fadeInUp}
             >
-              As we continue to grow, RENTAURAS remains committed to innovation,
-              safety, and sustainability. We're not just building a
-              transportation company – we're creating the foundation for
-              Morocco's smart mobility ecosystem.
+              {t.futureParagraph}
             </motion.p>
 
             <motion.button
@@ -547,11 +523,8 @@ const AboutPage = () => {
               whileHover={buttonHover}
               whileTap={buttonTap}
             >
-              Join Our Mission
+              {t.joinOurMission}
             </motion.button>
-            
-
-          
           </motion.div>
         </div>
       </motion.section>

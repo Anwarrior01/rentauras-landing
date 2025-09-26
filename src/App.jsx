@@ -32,8 +32,7 @@ const App = () => {
   return (
     <LanguageProvider>
       <Router>
-        <div className="min-h-screen bg-white text-black transition-all duration-300" 
-             style={{ fontFamily: 'Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif' }}>
+        <div className="min-h-screen bg-white text-black transition-all duration-300">
           
           <Navbar />
           
@@ -50,6 +49,7 @@ const App = () => {
           
           <style jsx>{`
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
             
             .animate-fade-in-up {
               animation: fadeInUp 1s ease-out;
@@ -86,6 +86,10 @@ const App = () => {
             
             .rtl .text-right {
               text-align: left;
+            }
+
+            * {
+              font-family: var(--primary-font, 'Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif');
             }
           `}</style>
         </div>

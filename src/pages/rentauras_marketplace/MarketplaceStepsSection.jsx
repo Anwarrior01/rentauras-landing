@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   fadeInUp,
   staggerContainer, 
@@ -10,41 +11,42 @@ import {
 } from '../../utils/animations';
 
 const MarketplaceStepsSection = () => {
+  const { t } = useLanguage();
   const stepsRef = useRef(null);
   const stepsInView = useInView(stepsRef, { once: true, amount: 0.2 });
 
   const steps = [
     {
-      number: "STEP 1",
-      title: "Download & Sign Up",
-      description: "Create your account in seconds and join thousands of happy drivers.",
+      number: t.marketplaceStep1Number,
+      title: t.marketplaceStep1Title,
+      description: t.marketplaceStep1Description,
       image: "assets/rentauras/steps/Mobile-login-cuate.svg",
       bgColor: "bg-purple-100",
       labelColor: "#0BB0CD",
       animationColor: ["#0BB0CD", "#8B5CF6", "#0BB0CD"]
     },
     {
-      number: "STEP 2", 
-      title: "Choose Your Car",
-      description: "Browse our wide collection of premium vehicles from trusted hosts.",
+      number: t.marketplaceStep2Number, 
+      title: t.marketplaceStep2Title,
+      description: t.marketplaceStep2Description,
       image: "assets/rentauras/steps/Car-rental-cuate.svg",
       bgColor: "bg-green-100",
       labelColor: "#0BB0CD",
       animationColor: ["#0BB0CD", "#10B981", "#0BB0CD"]
     },
     {
-      number: "STEP 3",
-      title: "Secure Payment", 
-      description: "Pay securely and easily with our trusted payment system.",
+      number: t.marketplaceStep3Number,
+      title: t.marketplaceStep3Title, 
+      description: t.marketplaceStep3Description,
       image: "assets/rentauras/steps/Credit-card-cuate.svg",
       bgColor: "bg-yellow-100",
       labelColor: "#EA580C",
       animationColor: ["#EA580C", "#0BB0CD", "#EA580C"]
     },
     {
-      number: "STEP 4",
-      title: "Enjoy Your Ride",
-      description: "Hit the road and create unforgettable memories.",
+      number: t.marketplaceStep4Number,
+      title: t.marketplaceStep4Title,
+      description: t.marketplaceStep4Description,
       image: "assets/rentauras/steps/convertible-car-cuate.svg", 
       bgColor: "bg-blue-100",
       labelColor: "#2563EB",
@@ -92,24 +94,24 @@ const MarketplaceStepsSection = () => {
               }}
             >
             <motion.div
-  className="absolute top-4 right-4 text-8xl font-bold opacity-10 pointer-events-none"
-  style={{ 
-    color: index === 0 ? '#8B5CF6' : 
-           index === 1 ? '#10B981' :
-           index === 2 ? '#EA580C' : '#2563EB'
-  }}
-  animate={{
-    opacity: [0.08, 0.15, 0.08],
-  }}
-  transition={{
-    duration: 4,
-    repeat: Infinity,
-    repeatType: "reverse",
-    delay: index * 0.5,
-  }}
->
-  {index + 1}
-</motion.div>
+              className="absolute top-4 right-4 text-8xl font-bold opacity-10 pointer-events-none"
+              style={{ 
+                color: index === 0 ? '#8B5CF6' : 
+                       index === 1 ? '#10B981' :
+                       index === 2 ? '#EA580C' : '#2563EB'
+              }}
+              animate={{
+                opacity: [0.08, 0.15, 0.08],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                repeatType: "reverse",
+                delay: index * 0.5,
+              }}
+            >
+              {index + 1}
+            </motion.div>
               <motion.div
                 className="text-xs font-medium mb-2 uppercase tracking-wide"
                 style={{ color: step.labelColor }}

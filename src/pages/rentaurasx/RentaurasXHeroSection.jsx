@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import { Star, Heart, Zap } from 'lucide-react';
 import { 
   staggerContainer, 
@@ -15,6 +16,7 @@ import {
 } from '../../utils/animations';
 
 const RentaurasXHeroSection = ({ setCurrentPage }) => {
+  const { t } = useLanguage();
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true, amount: 0.3 });
 
@@ -95,9 +97,9 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight"
               variants={textReveal}
             >
-              Your Ride, Your Way{' '}
+              {t.yourRideYourWay}{' '}
               <motion.span className="relative">
-                with 
+                {t.with} 
                 <motion.span
                   className="inline-block px-4 py-2 ml-2 rounded-xl text-white"
                   style={{ backgroundColor: '#0BB0CD' }}
@@ -118,7 +120,7 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
                     repeatType: "reverse",
                   }}
                 >
-                  RentaurasX
+                  {t.rentaurasX}
                 </motion.span>
                 <motion.div
                   className="absolute -top-2 -right-2 w-6 h-6 text-black"
@@ -158,8 +160,7 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
                 },
               }}
             >
-              Fast, reliable, and eco-friendly rides at your fingertips. 
-              Experience the future of urban mobility.
+              {t.fastReliableEco}
             </motion.p>
 
             {/* QR Code Placeholder */}
@@ -216,8 +217,8 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
                   repeatType: "reverse",
                 }}
               >
-                <div className="text-sm text-gray-500">Get the</div>
-                <div className="font-semibold text-slate-800">app</div>
+                <div className="text-sm text-gray-500">{t.getThe}</div>
+                <div className="font-semibold text-slate-800">{t.app}</div>
               </motion.div>
             </motion.div>
 
@@ -237,7 +238,7 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               />
-              <span className="relative z-10">Download the app</span>
+              <span className="relative z-10">{t.downloadTheApp}</span>
             </motion.button>
 
             {/* Floating decorative elements */}
@@ -325,9 +326,9 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
                     repeatType: "reverse",
                   }}
                 >
-                  Women to Women
+                  {t.womenToWomen}
                 </motion.div>
-                <div className="text-xs text-gray-600">First in Morocco!</div>
+                <div className="text-xs text-gray-600">{t.firstInMorocco}</div>
               </motion.div>
               
               {/* Floating Cards with Stars and Hearts */}
@@ -360,7 +361,7 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
                   }}
                 >
                   <Heart className="w-5 h-5 fill-current" />
-                  <span className="text-sm font-medium">Safe Rides</span>
+                  <span className="text-sm font-medium">{t.safeRides}</span>
                 </motion.div>
               </motion.div>
               
@@ -392,8 +393,8 @@ const RentaurasXHeroSection = ({ setCurrentPage }) => {
                     delay: 1.5,
                   }}
                 >
-                  <div className="text-sm text-gray-500">Our drivers are</div>
-                  <div className="font-semibold text-slate-800">Not strangers!</div>
+                  <div className="text-sm text-gray-500">{t.ourDriversAre}</div>
+                  <div className="font-semibold text-slate-800">{t.notStrangers}</div>
                 </motion.div>
               </motion.div>
               

@@ -1,12 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 
 const RentaurasXEVCollectionSection = () => {
+  const { t } = useLanguage();
+
   const cars = [
-    { image: 'TEsla.svg', description: 'Premium EV Car' },
-    { image: '4X4.svg', description: '4X4 EV Car' },
-    { image: 'Mercedes.svg', description: 'EV Truck' },
-    { image: 'audi.svg', description: 'Premium Class EV Car' }
+    { image: 'TEsla.svg', description: t.premiumEVCar },
+    { image: '4X4.svg', description: t.ev4x4Car },
+    { image: 'Mercedes.svg', description: t.evVan },
+    { image: 'audi.svg', description: t.premiumClassEVCar }
   ];
 
   return (
@@ -14,7 +17,7 @@ const RentaurasXEVCollectionSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-black mb-8">
-            Our EV Collection
+            {t.ourEVCollection}
           </h2>
         </div>
         

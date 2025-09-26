@@ -97,7 +97,7 @@ const MarketplaceHeroSection = ({ setCurrentPage }) => {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight"
               variants={textReveal}
             >
-              Own your Dream{" "}
+              {t.marketplaceHeroTitle}{" "}
               <motion.span className="relative">
                 with
                 <motion.span
@@ -120,7 +120,7 @@ const MarketplaceHeroSection = ({ setCurrentPage }) => {
                     repeatType: "reverse",
                   }}
                 >
-                  Rentauras
+                  {t.marketplaceHeroHighlight}
                 </motion.span>
                 <motion.div
                   className="absolute -top-2 -right-2 w-6 h-6 text-black"
@@ -160,8 +160,7 @@ const MarketplaceHeroSection = ({ setCurrentPage }) => {
                 },
               }}
             >
-              With the Rentauras App, you're in control. Choose the way you
-              rent and bring your dreams to drive.
+              {t.marketplaceHeroDescription}
             </motion.p>
 
             {/* QR Code Placeholder */}
@@ -218,8 +217,8 @@ const MarketplaceHeroSection = ({ setCurrentPage }) => {
                   repeatType: "reverse",
                 }}
               >
-                <div className="text-sm text-gray-500">Get the</div>
-                <div className="font-semibold text-slate-800">app</div>
+                <div className="text-sm text-gray-500">{t.getThe}</div>
+                <div className="font-semibold text-slate-800">{t.app}</div>
               </motion.div>
             </motion.div>
 
@@ -239,7 +238,7 @@ const MarketplaceHeroSection = ({ setCurrentPage }) => {
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               />
-              <span className="relative z-10">Download the app</span>
+              <span className="relative z-10">{t.downloadTheApp}</span>
             </motion.button>
 
             {/* Floating decorative elements */}
@@ -314,7 +313,7 @@ const MarketplaceHeroSection = ({ setCurrentPage }) => {
                   }}
                 >
                   <Heart className="w-5 h-5 fill-current" />
-                  <span className="text-sm font-medium">No hidden fees</span>
+                  <span className="text-sm font-medium">{t.marketplaceNoHiddenFeesCard}</span>
                 </motion.div>
               </motion.div>
 
@@ -349,7 +348,7 @@ const MarketplaceHeroSection = ({ setCurrentPage }) => {
                 >
                   <Shield className="w-5 h-5 fill-current" />
                   <span className="text-sm font-medium">
-                    Secure & Trusted
+                    {t.marketplaceSecureTrustedCard}
                   </span>
                 </motion.div>
               </motion.div>
@@ -382,9 +381,9 @@ const MarketplaceHeroSection = ({ setCurrentPage }) => {
                     delay: 1.5,
                   }}
                 >
-                  <div className="text-sm text-gray-500">Instant Booking</div>
+                  <div className="text-sm text-gray-500">{t.marketplaceInstantBookingCard}</div>
                   <div className="font-semibold text-slate-800">
-                    Book in seconds!
+                    {t.marketplaceBookInSecondsCard}
                   </div>
                 </motion.div>
               </motion.div>

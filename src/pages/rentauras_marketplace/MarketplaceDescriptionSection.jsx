@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import { textReveal, fadeInUp, cardHover } from '../../utils/animations';
 
 const MarketplaceDescriptionSection = () => {
+  const { t } = useLanguage();
   const descRef = useRef(null);
   const descInView = useInView(descRef, { once: true, amount: 0.5 });
 
@@ -78,7 +80,7 @@ const MarketplaceDescriptionSection = () => {
               transition={{ duration: 0.3 }}
             >
               <source 
-                src="/assets/rentaurasx/3d-Video-for-Rentauras-Marketpalce.mp4" 
+                src="/assets/rentauras/3d-Video-for-Rentauras-Marketpalce.mp4" 
                 type="video/mp4" 
               />
               Your browser does not support the video tag.
@@ -128,28 +130,7 @@ const MarketplaceDescriptionSection = () => {
               },
             }}
           >
-            Rent a Car{' '}
-            <motion.span 
-              className="text-[#0BB0CD]"
-              animate={{
-                textShadow: [
-                  "0 0 20px rgba(11, 176, 205, 0.5)",
-                  "0 0 40px rgba(11, 176, 205, 0.8)",
-                  "0 0 20px rgba(11, 176, 205, 0.5)"
-                ]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            >
-              at Rentauras
-            </motion.span>
-            <br />
-            <motion.span className="text-white">
-              Marketplace
-            </motion.span>
+            {t.marketplaceDescriptionTitle}
           </motion.h2>
 
           {/* Floating decorative elements */}

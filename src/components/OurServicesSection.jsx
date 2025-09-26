@@ -37,17 +37,17 @@ const OurServicesSection = ({ setCurrentPage }) => {
       buttons: [
         {
           id: 'renters',
-          label: 'Renters',
-          title: 'Join Rentauras as a Renter',
-          content: 'As a renter on Rentauras, you can access thousands of premium vehicles from verified hosts. Requirements include: valid driver\'s license (minimum 2 years experience), identity verification with selfie and ID card, secure payment method, and meeting age requirements (21+). Enjoy instant booking, comprehensive insurance coverage, 24/7 support, and transparent pricing with no hidden fees.',
-          action: 'Join Rentauras as a Renter'
+          label: t.renters,
+          title: t.joinRentaurasRenterTitle,
+          content: t.renterModalContent,
+          action: t.joinRentaurasRenterAction
         },
         {
           id: 'companies',
-          label: 'Companies',
-          title: 'Join Rentauras as a Company',
-          content: 'Partner with Rentauras to expand your car rental business. We provide digital tools to manage your fleet, reach more customers, and increase revenue. Requirements include: valid business license, vehicle documentation and insurance, professional service standards, and commitment to customer satisfaction. Benefit from our marketing platform, booking management system, and dedicated business support.',
-          action: 'Join Rentauras as a Company'
+          label: t.companies,
+          title: t.joinRentaurasCompanyTitle,
+          content: t.companyModalContent,
+          action: t.joinRentaurasCompanyAction
         }
       ]
     },
@@ -62,17 +62,17 @@ const OurServicesSection = ({ setCurrentPage }) => {
       buttons: [
         {
           id: 'drivers',
-          label: 'Drivers',
-          title: 'Join RentaurasX as a Driver',
-          content: 'Drive with RentaurasX and earn with flexible hours. We prioritize eco-friendly vehicles and professional service. Requirements include: valid driver\'s license (minimum 3 years experience), background check clearance, vehicle inspection and insurance, professional training completion. Enjoy competitive earnings, flexible schedule, fuel efficiency bonuses for electric/hybrid vehicles, and comprehensive driver support.',
-          action: 'Join RentaurasX as a Driver'
+          label: t.drivers,
+          title: t.joinRentaurasXDriverTitle,
+          content: t.driverModalContent,
+          action: t.joinRentaurasXDriverAction
         },
         {
           id: 'passengers',
-          label: 'Passengers',
-          title: 'Ride with RentaurasX',
-          content: 'Experience safe, reliable, and eco-friendly rides with RentaurasX. Features include: verified professional drivers (not strangers), real-time ride tracking, cashless secure payments, women-to-women service option, electric and hybrid vehicles, transparent pricing with no surge fees. Download the app to book your first ride and join thousands of satisfied passengers.',
-          action: 'Join RentaurasX as a Passenger'
+          label: t.passengers,
+          title: t.rideWithRentaurasXTitle,
+          content: t.passengerModalContent,
+          action: t.joinRentaurasXPassengerAction
         }
       ]
     }

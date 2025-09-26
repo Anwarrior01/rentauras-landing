@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Mail, Phone, MapPin, Send, MessageCircle, Clock, CheckCircle, Globe, Users } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import { 
   fadeInUp, 
   fadeInLeft, 
@@ -17,6 +18,7 @@ import {
 } from '../utils/animations';
 
 const ContactPage = ({ setCurrentPage }) => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -102,7 +104,7 @@ const ContactPage = ({ setCurrentPage }) => {
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight"
                 variants={textReveal}
               >
-                Get in Touch with{' '}
+                {t.heroTitlePart1}{' '}
                 <motion.span
                   className="bg-[#0BB0CD] text-white px-4 py-2 rounded-xl"
                   whileHover={{
@@ -110,7 +112,7 @@ const ContactPage = ({ setCurrentPage }) => {
                     boxShadow: "0 6px 20px rgba(11, 176, 205, 0.4)",
                   }}
                 >
-                  RENTAURAS
+                  {t.heroTitleHighlighted}
                 </motion.span>
               </motion.h1>
 
@@ -118,8 +120,7 @@ const ContactPage = ({ setCurrentPage }) => {
                 className="text-lg text-gray-600 mb-8 max-w-2xl"
                 variants={fadeInLeft}
               >
-                Have questions about our services? Want to partner with us? 
-                Or need support? We're here to help and would love to hear from you.
+                {t.heroDescription}
               </motion.p>
 
               <motion.div
@@ -141,7 +142,7 @@ const ContactPage = ({ setCurrentPage }) => {
                                   whileHover={{ opacity: 1 }}
                                   transition={{ duration: 0.3 }}
                                 />
-                                <span className="relative z-10"> Download App</span>
+                                <span className="relative z-10">{t.heroBtnDownloadApp}</span>
                               </motion.button>
                 
                 <motion.button
@@ -150,7 +151,7 @@ const ContactPage = ({ setCurrentPage }) => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Call Us Now
+                  {t.heroBtnCallUs}
                 </motion.button>
               </motion.div>
             </motion.div>
@@ -201,7 +202,7 @@ const ContactPage = ({ setCurrentPage }) => {
                 className="text-3xl font-bold text-black mb-8"
                 variants={textReveal}
               >
-                Send us a Message
+                {t.formTitle}
               </motion.h2>
 
               {!isSubmitted ? (
@@ -212,7 +213,7 @@ const ContactPage = ({ setCurrentPage }) => {
                 >
                   <motion.div variants={staggerItems}>
                     <label className="block text-gray-700 font-medium mb-2">
-                      Full Name
+                      {t.formNameLabel}
                     </label>
                     <motion.input
                       type="text"
@@ -220,7 +221,7 @@ const ContactPage = ({ setCurrentPage }) => {
                       value={formData.name}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0BB0CD] focus:border-transparent transition-colors duration-300"
-                      placeholder="Enter your full name"
+                      placeholder={t.formNamePlaceholder}
                       required
                       whileFocus={{ scale: 1.02 }}
                     />
@@ -228,7 +229,7 @@ const ContactPage = ({ setCurrentPage }) => {
 
                   <motion.div variants={staggerItems}>
                     <label className="block text-gray-700 font-medium mb-2">
-                      Email Address
+                      {t.formEmailLabel}
                     </label>
                     <motion.input
                       type="email"
@@ -236,7 +237,7 @@ const ContactPage = ({ setCurrentPage }) => {
                       value={formData.email}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0BB0CD] focus:border-transparent transition-colors duration-300"
-                      placeholder="Enter your email address"
+                      placeholder={t.formEmailPlaceholder}
                       required
                       whileFocus={{ scale: 1.02 }}
                     />
@@ -244,7 +245,7 @@ const ContactPage = ({ setCurrentPage }) => {
 
                   <motion.div variants={staggerItems}>
                     <label className="block text-gray-700 font-medium mb-2">
-                      Subject
+                      {t.formSubjectLabel}
                     </label>
                     <motion.select
                       name="subject"
@@ -254,19 +255,19 @@ const ContactPage = ({ setCurrentPage }) => {
                       required
                       whileFocus={{ scale: 1.02 }}
                     >
-                      <option value="">Select a subject</option>
-                      <option value="general">General Inquiry</option>
-                      <option value="support">Customer Support</option>
-                      <option value="partnership">Partnership</option>
-                      <option value="driver">Become a Driver</option>
-                      <option value="host">Become a Host</option>
-                      <option value="feedback">Feedback</option>
+                      <option value="">{t.formSubjectPlaceholder}</option>
+                      <option value="general">{t.formSubjectOptionGeneral}</option>
+                      <option value="support">{t.formSubjectOptionSupport}</option>
+                      <option value="partnership">{t.formSubjectOptionPartnership}</option>
+                      <option value="driver">{t.formSubjectOptionDriver}</option>
+                      <option value="host">{t.formSubjectOptionHost}</option>
+                      <option value="feedback">{t.formSubjectOptionFeedback}</option>
                     </motion.select>
                   </motion.div>
 
                   <motion.div variants={staggerItems}>
                     <label className="block text-gray-700 font-medium mb-2">
-                      Message
+                      {t.formMessageLabel}
                     </label>
                     <motion.textarea
                       name="message"
@@ -274,7 +275,7 @@ const ContactPage = ({ setCurrentPage }) => {
                       onChange={handleInputChange}
                       rows="5"
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0BB0CD] focus:border-transparent transition-colors duration-300 resize-none"
-                      placeholder="Tell us how we can help you..."
+                      placeholder={t.formMessagePlaceholder}
                       required
                       whileFocus={{ scale: 1.01 }}
                     />
@@ -288,7 +289,7 @@ const ContactPage = ({ setCurrentPage }) => {
                     whileTap={{ scale: 0.98 }}
                   >
                     <Send className="w-5 h-5" />
-                    <span>Send Message</span>
+                    <span>{t.formSubmitBtn}</span>
                   </motion.button>
                 </motion.form>
               ) : (
@@ -311,8 +312,8 @@ const ContactPage = ({ setCurrentPage }) => {
                   >
                     <CheckCircle className="w-10 h-10 text-green-600" />
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-black mb-2">Message Sent!</h3>
-                  <p className="text-gray-600">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                  <h3 className="text-2xl font-bold text-black mb-2">{t.submittedTitle}</h3>
+                  <p className="text-gray-600">{t.submittedDescription}</p>
                 </motion.div>
               )}
             </motion.div>
@@ -327,28 +328,28 @@ const ContactPage = ({ setCurrentPage }) => {
                   className="text-3xl font-bold text-black mb-8"
                   variants={textReveal}
                 >
-                  Contact Information
+                  {t.contactInfoTitle}
                 </motion.h3>
 
                 <div className="space-y-6">
                   {[
                     {
                       icon: <Phone className="w-6 h-6 text-[#0BB0CD]" />,
-                      title: "Phone",
+                      title: t.contactPhoneTitle,
                       info: "+212 5XX-XXXXX",
-                      description: "Call us Monday to Friday, 9AM - 6PM"
+                      description: t.contactPhoneDescription
                     },
                     {
                       icon: <Mail className="w-6 h-6 text-[#0BB0CD]" />,
-                      title: "Email",
+                      title: t.contactEmailTitle,
                       info: "contact@rentauras.com",
-                      description: "Send us your query anytime!"
+                      description: t.contactEmailDescription
                     },
                     {
                       icon: <MapPin className="w-6 h-6 text-[#0BB0CD]" />,
-                      title: "Office",
+                      title: t.contactOfficeTitle,
                       info: "Casablanca, Morocco",
-                      description: "Our headquarters in the economic capital"
+                      description: t.contactOfficeDescription
                     }
                   ].map((contact, index) => (
                     <motion.div
@@ -383,14 +384,14 @@ const ContactPage = ({ setCurrentPage }) => {
                   className="text-xl font-bold text-black mb-4"
                   variants={textReveal}
                 >
-                  Quick Actions
+                  {t.quickActionsTitle}
                 </motion.h4>
                 <div className="space-y-3">
                   {[
-                    { name: "Download Rentauras App", action: () => setCurrentPage('download') },
-                    { name: "Learn About Our Services", action: () => setCurrentPage('about') },
-                    { name: "Rent a Car", action: () => setCurrentPage('marketplace') },
-                    { name: "Book a Ride", action: () => setCurrentPage('rentaurasX') }
+                    { name: t.quickActionDownloadApp, action: () => setCurrentPage('download') },
+                    { name: t.quickActionLearnServices, action: () => setCurrentPage('about') },
+                    { name: t.quickActionRentCar, action: () => setCurrentPage('marketplace') },
+                    { name: t.quickActionBookRide, action: () => setCurrentPage('rentaurasX') }
                   ].map((link, index) => (
                     <motion.button
                       key={index}
@@ -408,98 +409,6 @@ const ContactPage = ({ setCurrentPage }) => {
         </div>
       </motion.section>
 
-      {/* Support Section */}
-      {/* <motion.section
-        ref={supportRef}
-        className="py-20 bg-white"
-        initial="hidden"
-        animate={supportInView ? "visible" : "hidden"}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div className="text-center mb-16" variants={staggerContainer}>
-            <motion.h2
-              className="text-3xl sm:text-4xl font-bold text-black mb-6"
-              variants={textReveal}
-            >
-              Need Immediate Help?
-            </motion.h2>
-            <motion.p
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
-              variants={fadeInUp}
-            >
-              Choose the support option that works best for you
-            </motion.p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <MessageCircle className="w-12 h-12 text-[#0BB0CD]" />,
-                title: "Live Chat",
-                description: "Chat with our support team in real-time",
-                action: "Start Chat",
-                bgColor: "#f0f9ff"
-              },
-              {
-                icon: <Phone className="w-12 h-12 text-[#0BB0CD]" />,
-                title: "Call Support",
-                description: "Speak directly with our support agents",
-                action: "Call Now",
-                bgColor: "#f0fdf4"
-              },
-              {
-                icon: <Globe className="w-12 h-12 text-[#0BB0CD]" />,
-                title: "Help Center",
-                description: "Browse our comprehensive FAQ section",
-                action: "View FAQ",
-                bgColor: "#fef3c7"
-              }
-            ].map((support, index) => (
-              <motion.div
-                key={index}
-                className="text-center p-8 rounded-3xl border border-gray-100 hover:border-[#0BB0CD]/30 transition-all duration-300"
-                style={{ backgroundColor: support.bgColor }}
-                variants={staggerItems}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(11, 176, 205, 0.1)"
-                }}
-              >
-                <motion.div
-                  className="mb-6"
-                  whileHover={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 0.6 }}
-                >
-                  {support.icon}
-                </motion.div>
-                
-                <motion.h3
-                  className="text-xl font-bold text-black mb-4"
-                  variants={textReveal}
-                >
-                  {support.title}
-                </motion.h3>
-                
-                <motion.p
-                  className="text-gray-600 mb-6"
-                  variants={fadeInUp}
-                >
-                  {support.description}
-                </motion.p>
-
-                <motion.button
-                  className="bg-[#0BB0CD] text-white px-6 py-3 rounded-full font-medium hover:bg-[#0BB0CD]/90 transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {support.action}
-                </motion.button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section> */}
-
       {/* Final CTA Section */}
       <motion.section
         className="py-20 bg-black text-white"
@@ -512,14 +421,14 @@ const ContactPage = ({ setCurrentPage }) => {
             className="text-3xl sm:text-4xl font-bold mb-8"
             variants={textReveal}
           >
-            Ready to Get Started?
+            {t.finalCtaTitle}
           </motion.h2>
           
           <motion.p
             className="text-xl mb-8 opacity-90"
             variants={fadeInUp}
           >
-            Join thousands of satisfied users across Morocco
+            {t.finalCtaDescription}
           </motion.p>
 
           <motion.button
@@ -529,7 +438,7 @@ const ContactPage = ({ setCurrentPage }) => {
             whileHover={buttonHover}
             whileTap={buttonTap}
           >
-            Download RENTAURAS App
+            {t.finalCtaBtnDownload}
           </motion.button>
         </div>
       </motion.section>

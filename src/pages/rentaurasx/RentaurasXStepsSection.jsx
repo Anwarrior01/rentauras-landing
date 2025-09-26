@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   staggerContainer, 
   staggerItems,
@@ -10,38 +11,39 @@ import {
 } from '../../utils/animations';
 
 const RentaurasXStepsSection = () => {
+  const { t } = useLanguage();
   const stepsRef = useRef(null);
   const stepsInView = useInView(stepsRef, { once: true, amount: 0.2 });
 
   const steps = [
     {
       id: 1,
-      title: 'Download & Register',
-      description: 'Quick sign-up to start your electric journey.',
+      titleKey: 'downloadRegister',
+      descriptionKey: 'quickSignUp',
       image: 'assets/rentauras/steps/Mobile-login-cuate.svg',
       bgColor: 'bg-purple-100',
       accentColor: '#8B5CF6'
     },
     {
       id: 2,
-      title: 'Request Your Ride',
-      description: 'Book eco-friendly rides with verified professional drivers.',
+      titleKey: 'requestYourRide',
+      descriptionKey: 'bookEcoFriendly',
       image: 'assets/rentaurasx/steps/City-driver-cuate.svg',
       bgColor: 'bg-green-100',
       accentColor: '#10B981'
     },
     {
       id: 3,
-      title: 'Track & Pay Securely',
-      description: 'Real-time tracking and cash/cashless secure payments.',
+      titleKey: 'trackPaySecurely',
+      descriptionKey: 'realTimeTracking',
       image: 'assets/rentaurasx/steps/GPS-navigator-cuate.svg',
       bgColor: 'bg-yellow-100',
       accentColor: '#F59E0B'
     },
     {
       id: 4,
-      title: 'Arrive Comfortably',
-      description: 'Enjoy smooth rides in our electric and hybrid vehicles.',
+      titleKey: 'arriveComfortably',
+      descriptionKey: 'enjoySmoothRides',
       image: 'assets/rentaurasx/steps/driving-cuate.svg',
       bgColor: 'bg-blue-100',
       accentColor: '#2563EB'
@@ -84,21 +86,22 @@ const RentaurasXStepsSection = () => {
                 },
               }}
             >
-            <motion.div
-  className="absolute top-4 right-4 text-8xl font-bold opacity-10 pointer-events-none"
-  style={{ color: step.accentColor }}
-  animate={{
-    opacity: [0.08, 0.15, 0.08],
-  }}
-  transition={{
-    duration: 4,
-    repeat: Infinity,
-    repeatType: "reverse",
-    delay: index * 0.5,
-  }}
->
-  {step.id}
-</motion.div>
+              <motion.div
+                className="absolute top-4 right-4 text-8xl font-bold opacity-10 pointer-events-none"
+                style={{ color: step.accentColor }}
+                animate={{
+                  opacity: [0.08, 0.15, 0.08],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: index * 0.5,
+                }}
+              >
+                {step.id}
+              </motion.div>
+              
               <motion.div
                 className="text-xs text-[#0BB0CD] font-medium mb-2 uppercase tracking-wide"
                 animate={{
@@ -111,14 +114,14 @@ const RentaurasXStepsSection = () => {
                   delay: index,
                 }}
               >
-                STEP {step.id}
+                {t.step} {step.id}
               </motion.div>
               
               <motion.h3
                 className="text-xl font-bold text-black mb-4"
                 variants={textReveal}
               >
-                {step.title}
+                {t[step.titleKey]}
               </motion.h3>
               
               <motion.div
@@ -128,7 +131,7 @@ const RentaurasXStepsSection = () => {
               >
                 <motion.img
                   src={step.image}
-                  alt={step.title}
+                  alt={t[step.titleKey]}
                   className={`${step.id === 2 ? 'w-80 h-64' : 'w-64 h-64'}`}
                   animate={{
                     rotate: step.id === 1 ? [0, 2, -2, 0] : 
@@ -151,7 +154,7 @@ const RentaurasXStepsSection = () => {
                 className="text-gray-600" 
                 variants={fadeInUp}
               >
-                {step.description}
+                {t[step.descriptionKey]}
               </motion.p>
             </motion.div>
           ))}

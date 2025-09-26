@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   fadeInUp,
   staggerContainer, 
@@ -10,29 +11,30 @@ import {
 } from '../../utils/animations';
 
 const MarketplaceFAQSection = () => {
+  const { t } = useLanguage();
   const faqRef = useRef(null);
   const faqInView = useInView(faqRef, { once: true, amount: 0.3 });
 
   const faqData = [
     {
-      question: "What is Rentauras Marketplace and how does it work?",
-      answer: "Rentauras Marketplace is a peer-to-peer car rental platform that connects car owners with renters. Simply browse available cars, book instantly, and enjoy your ride.",
+      question: t.marketplaceFAQ1Question,
+      answer: t.marketplaceFAQ1Answer,
     },
     {
-      question: "Where can I rent cars with Rentauras?",
-      answer: "Rentauras operates in major cities across Morocco. Check our app to see available cars in your area.",
+      question: t.marketplaceFAQ2Question,
+      answer: t.marketplaceFAQ2Answer,
     },
     {
-      question: "Is insurance included with my rental?",
-      answer: "Yes, all rentals include comprehensive insurance coverage for your peace of mind.",
+      question: t.marketplaceFAQ3Question,
+      answer: t.marketplaceFAQ3Answer,
     },
     {
-      question: "How do I become a host on Rentauras?",
-      answer: "Download our app, verify your identity and car documents, and start earning by renting out your vehicle.",
+      question: t.marketplaceFAQ4Question,
+      answer: t.marketplaceFAQ4Answer,
     },
     {
-      question: "What payment methods do you accept?",
-      answer: "We accept all major credit cards, debit cards, and digital payment methods for your convenience.",
+      question: t.marketplaceFAQ5Question,
+      answer: t.marketplaceFAQ5Answer,
     },
   ];
 
@@ -48,7 +50,7 @@ const MarketplaceFAQSection = () => {
           className="text-3xl font-bold text-black mb-12 text-center"
           variants={textReveal}
         >
-          Frequently asked questions
+          {t.marketplaceFAQTitle}
         </motion.h2>
 
         <motion.div className="space-y-6" variants={staggerContainer}>
